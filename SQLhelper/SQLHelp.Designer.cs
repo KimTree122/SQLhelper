@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SQLHelp));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.rtxb_import = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -433,6 +434,7 @@
             this.ClientSize = new System.Drawing.Size(1001, 600);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("宋体", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SQLHelp";
             this.Padding = new System.Windows.Forms.Padding(27, 80, 27, 27);

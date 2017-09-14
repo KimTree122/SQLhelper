@@ -127,7 +127,6 @@ namespace SQLhelper
              bool c = ssc.Checklegal(SQLstr);
             if (!c)
             {
-		 
                 MetroMessageBox.Show(this, "SQL语句格式不符合.\r\n请输入符合:select ... from BaseName 的语句"
                     , "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
