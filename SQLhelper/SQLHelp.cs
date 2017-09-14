@@ -128,7 +128,7 @@ namespace SQLhelper
             if (!c)
             {
 		 
-                MetroMessageBox.Show(this, "数据格式不符合.\r\n 请载入包含:select ... from BaseName 语句"
+                MetroMessageBox.Show(this, "SQL语句格式不符合.\r\n请输入符合:select ... from BaseName 的语句"
                     , "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return c;
@@ -143,6 +143,16 @@ namespace SQLhelper
                 {
                     strlst.Add(clb_item.Items[i].ToString());
                 }
+            }
+            if (strlst.Count == 0)
+            {
+                rtxb_add_normal.Text = "";
+                rtxb_add_param.Text = "";
+                rtxb_c_con.Text = "";
+                rtxb_j_con.Text = "";
+                rtxb_object.Text = "";
+                rtxb_update_normal.Text = "";
+                rtxb_update_param.Text = "";
             }
             return strlst;
 
@@ -175,7 +185,7 @@ namespace SQLhelper
 
             if (txb_obj.Text.Trim().Length > 0)
             {
-                rtxb_object.Text = ocon.ObjectList(allfeild, txb_obj.Text.Trim());
+                rtxb_object.Text = ocon.ObjectList(strlst, txb_obj.Text.Trim());
             }
             else
             {
