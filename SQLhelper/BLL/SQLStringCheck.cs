@@ -48,7 +48,7 @@ namespace SQLhelper.BLL
             if (count > -1)
             {
                 basename = SQL.Substring(count, SQL.Length - count);
-                basename = basename.Replace("FROM", "");
+                basename = basename.Substring(4);
             }
 
             return basename.Trim();
