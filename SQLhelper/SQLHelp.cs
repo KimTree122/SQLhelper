@@ -178,8 +178,11 @@ namespace SQLhelper
             rtxb_update_normal.Text = updatesql.CreatNormalSQL(strlst, BaseName);
             rtxb_update_param.Text = updatesql.CreatParamSQL(strlst, BaseName);
 
-            rtxb_c_con.Text = ocon.CreatCSharpConstructor(allfeild);
-            rtxb_j_con.Text = ocon.CreatJavaConstructor(allfeild);
+            rtxb_c_con.Text = ocon.CreatCSharpConstructor(allfeild,false);
+            rtxb_c_con2.Text = ocon.CreatCSharpConstructor(allfeild,true);
+
+            rtxb_j_con.Text = ocon.CreatJavaConstructor(allfeild,false);
+            rtxb_j_con2.Text = ocon.CreatJavaConstructor(allfeild, true);
 
 
             if (txb_obj.Text.Trim().Length > 0)

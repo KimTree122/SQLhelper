@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SQLHelp));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtxb_import = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -56,11 +57,13 @@
             this.mTP5 = new MetroFramework.Controls.MetroTabPage();
             this.rtxb_object = new System.Windows.Forms.RichTextBox();
             this.clb_item = new System.Windows.Forms.CheckedListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rtxb_c_con2 = new System.Windows.Forms.RichTextBox();
+            this.rtxb_j_con2 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -70,7 +73,6 @@
             this.mTP3.SuspendLayout();
             this.mTP4.SuspendLayout();
             this.mTP5.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -92,6 +94,17 @@
             this.splitContainer1.SplitterDistance = 295;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rtxb_import);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 192);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(295, 301);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "查询语句";
             // 
             // rtxb_import
             // 
@@ -253,7 +266,7 @@
             this.metroTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTab.Location = new System.Drawing.Point(151, 22);
             this.metroTab.Name = "metroTab";
-            this.metroTab.SelectedIndex = 0;
+            this.metroTab.SelectedIndex = 2;
             this.metroTab.Size = new System.Drawing.Size(493, 468);
             this.metroTab.TabIndex = 5;
             this.metroTab.UseSelectable = true;
@@ -264,7 +277,7 @@
             this.mTP1.Controls.Add(this.rtxb_add_param);
             this.mTP1.HorizontalScrollbarBarColor = true;
             this.mTP1.HorizontalScrollbarHighlightOnWheel = false;
-            this.mTP1.HorizontalScrollbarSize = 3;
+            this.mTP1.HorizontalScrollbarSize = 2;
             this.mTP1.Location = new System.Drawing.Point(4, 38);
             this.mTP1.Name = "mTP1";
             this.mTP1.Size = new System.Drawing.Size(485, 426);
@@ -272,7 +285,7 @@
             this.mTP1.Text = "C#-新增";
             this.mTP1.VerticalScrollbarBarColor = true;
             this.mTP1.VerticalScrollbarHighlightOnWheel = false;
-            this.mTP1.VerticalScrollbarSize = 3;
+            this.mTP1.VerticalScrollbarSize = 2;
             // 
             // rtxb_add_normal
             // 
@@ -300,7 +313,7 @@
             this.mTP2.Controls.Add(this.rtxb_update_param);
             this.mTP2.HorizontalScrollbarBarColor = true;
             this.mTP2.HorizontalScrollbarHighlightOnWheel = false;
-            this.mTP2.HorizontalScrollbarSize = 3;
+            this.mTP2.HorizontalScrollbarSize = 2;
             this.mTP2.Location = new System.Drawing.Point(4, 38);
             this.mTP2.Name = "mTP2";
             this.mTP2.Size = new System.Drawing.Size(485, 426);
@@ -308,7 +321,7 @@
             this.mTP2.Text = "C#-更新";
             this.mTP2.VerticalScrollbarBarColor = true;
             this.mTP2.VerticalScrollbarHighlightOnWheel = false;
-            this.mTP2.VerticalScrollbarSize = 3;
+            this.mTP2.VerticalScrollbarSize = 2;
             // 
             // rtxb_update_normal
             // 
@@ -332,10 +345,11 @@
             // 
             // mTP3
             // 
+            this.mTP3.Controls.Add(this.rtxb_c_con2);
             this.mTP3.Controls.Add(this.rtxb_c_con);
             this.mTP3.HorizontalScrollbarBarColor = true;
             this.mTP3.HorizontalScrollbarHighlightOnWheel = false;
-            this.mTP3.HorizontalScrollbarSize = 3;
+            this.mTP3.HorizontalScrollbarSize = 2;
             this.mTP3.Location = new System.Drawing.Point(4, 38);
             this.mTP3.Name = "mTP3";
             this.mTP3.Size = new System.Drawing.Size(485, 426);
@@ -343,24 +357,25 @@
             this.mTP3.Text = "C#-构造器";
             this.mTP3.VerticalScrollbarBarColor = true;
             this.mTP3.VerticalScrollbarHighlightOnWheel = false;
-            this.mTP3.VerticalScrollbarSize = 3;
+            this.mTP3.VerticalScrollbarSize = 2;
             // 
             // rtxb_c_con
             // 
             this.rtxb_c_con.BackColor = System.Drawing.SystemColors.Window;
-            this.rtxb_c_con.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.rtxb_c_con.Location = new System.Drawing.Point(0, 26);
+            this.rtxb_c_con.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rtxb_c_con.Location = new System.Drawing.Point(0, 0);
             this.rtxb_c_con.Name = "rtxb_c_con";
-            this.rtxb_c_con.Size = new System.Drawing.Size(485, 400);
+            this.rtxb_c_con.Size = new System.Drawing.Size(242, 426);
             this.rtxb_c_con.TabIndex = 5;
             this.rtxb_c_con.Text = "";
             // 
             // mTP4
             // 
+            this.mTP4.Controls.Add(this.rtxb_j_con2);
             this.mTP4.Controls.Add(this.rtxb_j_con);
             this.mTP4.HorizontalScrollbarBarColor = true;
             this.mTP4.HorizontalScrollbarHighlightOnWheel = false;
-            this.mTP4.HorizontalScrollbarSize = 3;
+            this.mTP4.HorizontalScrollbarSize = 2;
             this.mTP4.Location = new System.Drawing.Point(4, 38);
             this.mTP4.Name = "mTP4";
             this.mTP4.Size = new System.Drawing.Size(485, 426);
@@ -368,15 +383,15 @@
             this.mTP4.Text = "JAVA-构造器";
             this.mTP4.VerticalScrollbarBarColor = true;
             this.mTP4.VerticalScrollbarHighlightOnWheel = false;
-            this.mTP4.VerticalScrollbarSize = 3;
+            this.mTP4.VerticalScrollbarSize = 2;
             // 
             // rtxb_j_con
             // 
             this.rtxb_j_con.BackColor = System.Drawing.SystemColors.Window;
-            this.rtxb_j_con.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.rtxb_j_con.Location = new System.Drawing.Point(0, 26);
+            this.rtxb_j_con.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rtxb_j_con.Location = new System.Drawing.Point(0, 0);
             this.rtxb_j_con.Name = "rtxb_j_con";
-            this.rtxb_j_con.Size = new System.Drawing.Size(485, 400);
+            this.rtxb_j_con.Size = new System.Drawing.Size(243, 426);
             this.rtxb_j_con.TabIndex = 6;
             this.rtxb_j_con.Text = "";
             // 
@@ -385,7 +400,7 @@
             this.mTP5.Controls.Add(this.rtxb_object);
             this.mTP5.HorizontalScrollbarBarColor = true;
             this.mTP5.HorizontalScrollbarHighlightOnWheel = false;
-            this.mTP5.HorizontalScrollbarSize = 3;
+            this.mTP5.HorizontalScrollbarSize = 2;
             this.mTP5.Location = new System.Drawing.Point(4, 38);
             this.mTP5.Name = "mTP5";
             this.mTP5.Size = new System.Drawing.Size(485, 426);
@@ -393,7 +408,7 @@
             this.mTP5.Text = "类项";
             this.mTP5.VerticalScrollbarBarColor = true;
             this.mTP5.VerticalScrollbarHighlightOnWheel = false;
-            this.mTP5.VerticalScrollbarSize = 3;
+            this.mTP5.VerticalScrollbarSize = 2;
             // 
             // rtxb_object
             // 
@@ -415,16 +430,25 @@
             this.clb_item.TabIndex = 2;
             this.clb_item.MouseUp += new System.Windows.Forms.MouseEventHandler(this.clb_item_MouseUp);
             // 
-            // groupBox3
+            // rtxb_c_con2
             // 
-            this.groupBox3.Controls.Add(this.rtxb_import);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 192);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(295, 301);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "查询语句";
+            this.rtxb_c_con2.BackColor = System.Drawing.SystemColors.Window;
+            this.rtxb_c_con2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxb_c_con2.Location = new System.Drawing.Point(242, 0);
+            this.rtxb_c_con2.Name = "rtxb_c_con2";
+            this.rtxb_c_con2.Size = new System.Drawing.Size(243, 426);
+            this.rtxb_c_con2.TabIndex = 6;
+            this.rtxb_c_con2.Text = "";
+            // 
+            // rtxb_j_con2
+            // 
+            this.rtxb_j_con2.BackColor = System.Drawing.SystemColors.Window;
+            this.rtxb_j_con2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxb_j_con2.Location = new System.Drawing.Point(243, 0);
+            this.rtxb_j_con2.Name = "rtxb_j_con2";
+            this.rtxb_j_con2.Size = new System.Drawing.Size(242, 426);
+            this.rtxb_j_con2.TabIndex = 7;
+            this.rtxb_j_con2.Text = "";
             // 
             // SQLHelp
             // 
@@ -444,6 +468,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -455,7 +480,6 @@
             this.mTP3.ResumeLayout(false);
             this.mTP4.ResumeLayout(false);
             this.mTP5.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -490,6 +514,8 @@
         private System.Windows.Forms.RichTextBox rtxb_j_con;
         private System.Windows.Forms.RichTextBox rtxb_object;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RichTextBox rtxb_c_con2;
+        private System.Windows.Forms.RichTextBox rtxb_j_con2;
 
     }
 }

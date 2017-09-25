@@ -7,25 +7,27 @@ namespace SQLhelper.BLL
 {
     public class ObjectConstructor
     {
-        public string CreatCSharpConstructor(List<string> strlst) 
+        public string CreatCSharpConstructor(List<string> strlst,bool lower) 
         {
             string str = "";
 
             foreach (string s in strlst)
             {
-                str += "public string " + s + " { get; set; } \n\r";
+                string field = lower ? s.ToLower() : s;
+                str += "public string " + field + " { get; set; } \n";
             }
 
             return str;
         }
 
-        public string CreatJavaConstructor(List<string> strlst)
+        public string CreatJavaConstructor(List<string> strlst, bool lower)
         {
             string str = "";
 
             foreach (string s in strlst)
             {
-                str += "private String "+ s + " \n\r";
+                string field = lower ? s.ToLower() : s;
+                str += "private String " + field + "; \n";
             }
             return str;
         }
