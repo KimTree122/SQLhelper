@@ -187,11 +187,13 @@ namespace SQLhelper
 
             if (txb_obj.Text.Trim().Length > 0)
             {
-                rtxb_object.Text = ocon.ObjectList(strlst, txb_obj.Text.Trim());
+                rtxb_object.Text = ocon.ObjectList(strlst, txb_obj.Text.Trim(),false);
+                rtxb_object2.Text = ocon.ObjectList(strlst, txb_obj.Text.Trim(),true);
             }
             else
             {
                 rtxb_object.Text = "";
+                rtxb_object2.Text = "";
             }
         }
 

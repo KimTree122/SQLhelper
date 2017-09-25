@@ -32,13 +32,14 @@ namespace SQLhelper.BLL
             return str;
         }
 
-        public string ObjectList(List<string> strlst,string obj )
+        public string ObjectList(List<string> strlst,string obj ,bool lower)
         {
             string objlst = "";
 
             foreach (string s in strlst)
             {
-                objlst += obj + "." + s+" ,";
+                string field = lower ? s.ToLower() : s;
+                objlst += obj + "." + field + " ,";
             }
             objlst += "over";
             objlst = objlst.Replace(",over", "");

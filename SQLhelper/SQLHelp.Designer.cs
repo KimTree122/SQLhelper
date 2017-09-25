@@ -51,14 +51,15 @@
             this.rtxb_update_normal = new System.Windows.Forms.RichTextBox();
             this.rtxb_update_param = new System.Windows.Forms.RichTextBox();
             this.mTP3 = new MetroFramework.Controls.MetroTabPage();
+            this.rtxb_c_con2 = new System.Windows.Forms.RichTextBox();
             this.rtxb_c_con = new System.Windows.Forms.RichTextBox();
             this.mTP4 = new MetroFramework.Controls.MetroTabPage();
+            this.rtxb_j_con2 = new System.Windows.Forms.RichTextBox();
             this.rtxb_j_con = new System.Windows.Forms.RichTextBox();
             this.mTP5 = new MetroFramework.Controls.MetroTabPage();
             this.rtxb_object = new System.Windows.Forms.RichTextBox();
             this.clb_item = new System.Windows.Forms.CheckedListBox();
-            this.rtxb_c_con2 = new System.Windows.Forms.RichTextBox();
-            this.rtxb_j_con2 = new System.Windows.Forms.RichTextBox();
+            this.rtxb_object2 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -266,7 +267,7 @@
             this.metroTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTab.Location = new System.Drawing.Point(151, 22);
             this.metroTab.Name = "metroTab";
-            this.metroTab.SelectedIndex = 2;
+            this.metroTab.SelectedIndex = 0;
             this.metroTab.Size = new System.Drawing.Size(493, 468);
             this.metroTab.TabIndex = 5;
             this.metroTab.UseSelectable = true;
@@ -359,6 +360,16 @@
             this.mTP3.VerticalScrollbarHighlightOnWheel = false;
             this.mTP3.VerticalScrollbarSize = 2;
             // 
+            // rtxb_c_con2
+            // 
+            this.rtxb_c_con2.BackColor = System.Drawing.SystemColors.Window;
+            this.rtxb_c_con2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxb_c_con2.Location = new System.Drawing.Point(242, 0);
+            this.rtxb_c_con2.Name = "rtxb_c_con2";
+            this.rtxb_c_con2.Size = new System.Drawing.Size(243, 426);
+            this.rtxb_c_con2.TabIndex = 6;
+            this.rtxb_c_con2.Text = "";
+            // 
             // rtxb_c_con
             // 
             this.rtxb_c_con.BackColor = System.Drawing.SystemColors.Window;
@@ -385,6 +396,16 @@
             this.mTP4.VerticalScrollbarHighlightOnWheel = false;
             this.mTP4.VerticalScrollbarSize = 2;
             // 
+            // rtxb_j_con2
+            // 
+            this.rtxb_j_con2.BackColor = System.Drawing.SystemColors.Window;
+            this.rtxb_j_con2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxb_j_con2.Location = new System.Drawing.Point(243, 0);
+            this.rtxb_j_con2.Name = "rtxb_j_con2";
+            this.rtxb_j_con2.Size = new System.Drawing.Size(242, 426);
+            this.rtxb_j_con2.TabIndex = 7;
+            this.rtxb_j_con2.Text = "";
+            // 
             // rtxb_j_con
             // 
             this.rtxb_j_con.BackColor = System.Drawing.SystemColors.Window;
@@ -397,6 +418,7 @@
             // 
             // mTP5
             // 
+            this.mTP5.Controls.Add(this.rtxb_object2);
             this.mTP5.Controls.Add(this.rtxb_object);
             this.mTP5.HorizontalScrollbarBarColor = true;
             this.mTP5.HorizontalScrollbarHighlightOnWheel = false;
@@ -413,10 +435,10 @@
             // rtxb_object
             // 
             this.rtxb_object.BackColor = System.Drawing.SystemColors.Window;
-            this.rtxb_object.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.rtxb_object.Location = new System.Drawing.Point(0, 26);
+            this.rtxb_object.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rtxb_object.Location = new System.Drawing.Point(0, 0);
             this.rtxb_object.Name = "rtxb_object";
-            this.rtxb_object.Size = new System.Drawing.Size(485, 400);
+            this.rtxb_object.Size = new System.Drawing.Size(242, 426);
             this.rtxb_object.TabIndex = 6;
             this.rtxb_object.Text = "";
             // 
@@ -430,25 +452,15 @@
             this.clb_item.TabIndex = 2;
             this.clb_item.MouseUp += new System.Windows.Forms.MouseEventHandler(this.clb_item_MouseUp);
             // 
-            // rtxb_c_con2
+            // rtxb_object2
             // 
-            this.rtxb_c_con2.BackColor = System.Drawing.SystemColors.Window;
-            this.rtxb_c_con2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxb_c_con2.Location = new System.Drawing.Point(242, 0);
-            this.rtxb_c_con2.Name = "rtxb_c_con2";
-            this.rtxb_c_con2.Size = new System.Drawing.Size(243, 426);
-            this.rtxb_c_con2.TabIndex = 6;
-            this.rtxb_c_con2.Text = "";
-            // 
-            // rtxb_j_con2
-            // 
-            this.rtxb_j_con2.BackColor = System.Drawing.SystemColors.Window;
-            this.rtxb_j_con2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxb_j_con2.Location = new System.Drawing.Point(243, 0);
-            this.rtxb_j_con2.Name = "rtxb_j_con2";
-            this.rtxb_j_con2.Size = new System.Drawing.Size(242, 426);
-            this.rtxb_j_con2.TabIndex = 7;
-            this.rtxb_j_con2.Text = "";
+            this.rtxb_object2.BackColor = System.Drawing.SystemColors.Window;
+            this.rtxb_object2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxb_object2.Location = new System.Drawing.Point(242, 0);
+            this.rtxb_object2.Name = "rtxb_object2";
+            this.rtxb_object2.Size = new System.Drawing.Size(243, 426);
+            this.rtxb_object2.TabIndex = 7;
+            this.rtxb_object2.Text = "";
             // 
             // SQLHelp
             // 
@@ -516,6 +528,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RichTextBox rtxb_c_con2;
         private System.Windows.Forms.RichTextBox rtxb_j_con2;
+        private System.Windows.Forms.RichTextBox rtxb_object2;
 
     }
 }
