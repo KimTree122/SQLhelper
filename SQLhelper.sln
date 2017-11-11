@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLhelper", "SQLhelper\SQLh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORMsample", "ORMsample\ORMsample.csproj", "{AA367DBE-1FEA-4D1F-B01A-ECD5AB981E87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadTest", "ThreadTest\ThreadTest.csproj", "{D1CF62B7-8A40-4FC8-8BB6-C2EBE812757A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepartMent", "DepartMent\DepartMent.csproj", "{49E34893-E1FB-4098-9913-276F1AD96F71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{AA367DBE-1FEA-4D1F-B01A-ECD5AB981E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA367DBE-1FEA-4D1F-B01A-ECD5AB981E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA367DBE-1FEA-4D1F-B01A-ECD5AB981E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1CF62B7-8A40-4FC8-8BB6-C2EBE812757A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CF62B7-8A40-4FC8-8BB6-C2EBE812757A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CF62B7-8A40-4FC8-8BB6-C2EBE812757A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1CF62B7-8A40-4FC8-8BB6-C2EBE812757A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49E34893-E1FB-4098-9913-276F1AD96F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49E34893-E1FB-4098-9913-276F1AD96F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49E34893-E1FB-4098-9913-276F1AD96F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49E34893-E1FB-4098-9913-276F1AD96F71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
