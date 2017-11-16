@@ -103,7 +103,7 @@ namespace DepartMent
                     TreeNode tn = new TreeNode();
                     tn.Text = a.AuthName;
                     tn.Tag = a;
-                    tn.ImageIndex = 0;
+                    //tn.ImageIndex = 0;
                     tnLs.Add(tn);
                     AddSonTN(tn, authls);
                 }
@@ -122,7 +122,7 @@ namespace DepartMent
                     stn.Text = a.AuthName;
                     stn.Tag = a;
                     tn.Nodes.Add(stn);
-                    tn.ImageIndex = 1;
+                    //tn.ImageIndex = 1;
                     AddSonTN(stn,authls);
                 }
             }
@@ -150,10 +150,10 @@ namespace DepartMent
             cmb_type.ValueMember = "authid";
 
 
-            Image im = Image.FromFile(Application.StartupPath + "/Image/ic_begintran.png");
+            //Image im = Image.FromFile(Application.StartupPath + "/Image/ic_begintran.png");
             Image im2 = Image.FromFile(Application.StartupPath + "/Image/ic_distribution.png");
-            treeView.ImageList = new ImageList();  
-            treeView.ImageList.Images.Add(im);
+            treeView.ImageList = new ImageList();
+            //treeView.ImageList.Images.Add(im);
             treeView.ImageList.Images.Add(im2);
 
         }
@@ -183,6 +183,7 @@ namespace DepartMent
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             ChoiceTn = treeView.SelectedNode;
+
         }
 
         private void btn_load_Click(object sender, EventArgs e)
