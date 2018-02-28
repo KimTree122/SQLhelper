@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADOHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADOHelper.Designer.cs">
+      <DependentUpon>ADOHelper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BLL\DataBaseField.cs" />
     <Compile Include="BLL\InsertSQL.cs" />
     <Compile Include="BLL\ObjectConstructor.cs" />
