@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SQLhelper
 {
-    public partial class ADOHelper : Form
+    public partial class ADOHelper : MetroForm
     {
         public ADOHelper()
         {
