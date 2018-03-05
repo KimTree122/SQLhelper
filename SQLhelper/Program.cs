@@ -15,7 +15,7 @@ namespace SQLhelper
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SQLHelp());
+            Application.Run(new ADOHelper());
         }
     }
 }

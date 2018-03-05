@@ -51,6 +51,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -73,6 +74,12 @@
     <Compile Include="BLL\ObjectConstructor.cs" />
     <Compile Include="BLL\SQLStringCheck.cs" />
     <Compile Include="BLL\UpdateSQL.cs" />
+    <Compile Include="Comm\AppSetting.cs" />
+    <Compile Include="HelperDAL\HelperADO.cs" />
+    <Compile Include="HelperDAL\HelperDal.cs" />
+    <Compile Include="HelperModel\ConnElement.cs" />
+    <Compile Include="IHelper\FormHelper.cs" />
+    <Compile Include="IHelper\IHelperForm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLHelp.cs">
@@ -81,6 +88,9 @@
     <Compile Include="SQLHelp.Designer.cs">
       <DependentUpon>SQLHelp.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ADOHelper.resx">
+      <DependentUpon>ADOHelper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -94,6 +104,7 @@
     <EmbeddedResource Include="SQLHelp.resx">
       <DependentUpon>SQLHelp.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -111,6 +122,7 @@
     <None Include="Resources\sqlhelp.jpeg" />
     <Content Include="sqlhelp.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
