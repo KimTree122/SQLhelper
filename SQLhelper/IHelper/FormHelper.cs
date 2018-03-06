@@ -23,7 +23,9 @@ namespace SQLhelper.IHelper
         public bool InitConnHelper(ConnElement ce)
         {
             hA = new HelperADO(ce);
-            return HelperADO.CheckConncet();
+            bool connect = HelperADO.CheckConncet();
+            if (!connect) SaveInput(ce);
+            return connect;
         }
 
         public void SaveInput(ConnElement ce)

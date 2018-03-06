@@ -113,7 +113,7 @@ namespace DepartMent
         public void AddSonTN( TreeNode tn , List<Auth> authls)
         {
             Auth fa =(Auth) tn.Tag ;
-
+            bool image = false;
             foreach (Auth a in authls)
             {
                 if (a.ParentID == fa.ID)
@@ -124,6 +124,16 @@ namespace DepartMent
                     tn.Nodes.Add(stn);
                     //tn.ImageIndex = 1;
                     AddSonTN(stn,authls);
+                }
+                if (image)
+                {
+                    tn.ImageIndex = 0;
+                    image = false;
+                }
+                else
+                {
+                    tn.ImageIndex = 1;
+                    image = true;
                 }
             }
         }
@@ -150,10 +160,10 @@ namespace DepartMent
             cmb_type.ValueMember = "authid";
 
 
-            //Image im = Image.FromFile(Application.StartupPath + "/Image/ic_begintran.png");
+            Image im = Image.FromFile(Application.StartupPath + "/Image/ic_begintran.png");
             Image im2 = Image.FromFile(Application.StartupPath + "/Image/ic_distribution.png");
             treeView.ImageList = new ImageList();
-            //treeView.ImageList.Images.Add(im);
+            treeView.ImageList.Images.Add(im);
             treeView.ImageList.Images.Add(im2);
 
         }
@@ -188,7 +198,9 @@ namespace DepartMent
 
         private void btn_load_Click(object sender, EventArgs e)
         {
-            LoadData();
+            //LoadData();
+            var g =  Guid.NewGuid().ToString("N");
+            
         }
     }
 }
