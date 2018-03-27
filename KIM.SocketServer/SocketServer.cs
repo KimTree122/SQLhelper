@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,5 +16,17 @@ namespace KIM.SocketServer
         {
             InitializeComponent();
         }
+
+        private void SocketServer_Load(object sender, EventArgs e)
+        {
+            InitSocket();
+        }
+
+        private void InitSocket()
+        {
+           
+        }
+
+       
     }
 }
