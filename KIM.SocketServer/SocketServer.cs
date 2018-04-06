@@ -19,9 +19,6 @@ namespace KIM.SocketServer
         private delegate void Lv_Recive(ListView lv, string message);
         private delegate void RTxb_Recive(RichTextBox t , string msg);
 
-
-
-
         public SocketServer()
         {
             InitializeComponent();
@@ -116,6 +113,21 @@ namespace KIM.SocketServer
         private void tbtn_end_Click(object sender, EventArgs e)
         {
             socketService.DisConnectSocket();
+        }
+
+        private void tbtn_send_Click(object sender, EventArgs e)
+        {
+            List<string> strlist = new List<string>();
+            foreach (ListViewItem item in lv_client.Items)
+            {
+                if (item.Checked)
+                {
+                    string ip = "IP:" + item.SubItems[1].Text + "Port:" + item.SubItems[2].Text;
+                    strlist.Add(ip);
+                }
+            }
+
+            socketService.SeverSendMsg(strlist, rtxb_send.Text);
         }
 
     }
