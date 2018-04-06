@@ -45,9 +45,12 @@ namespace KIM.SocketServer
             socketWatch.Bind(endPoint);
             socketWatch.Listen(20);
 
-            threadWatch = new Thread(WatchConnecting);
-            threadWatch.IsBackground = true;
-            threadWatch.Start();
+            ThreadPool.QueueUserWorkItem(new WaitCallback(this.WatchConnecting),socketWatch);
+
+
+            //threadWatch = new Thread(WatchConnecting);
+            //threadWatch.IsBackground = true;
+            //threadWatch.Start();
             delsendMessage(SendType.message, "服务已经启动");
         }
 
@@ -65,7 +68,7 @@ namespace KIM.SocketServer
             return localIPv4;
         }
 
-        private void WatchConnecting() 
+        private void WatchConnecting(object socket) 
         {
             while (true)
             {
@@ -95,7 +98,6 @@ namespace KIM.SocketServer
             }
         }
 
-
         public void SeverSendMsg(List<string> clientNames, string sendMsg)
         {
             byte[] arrSendMsg = Encoding.UTF8.GetBytes(sendMsg);
@@ -112,7 +114,6 @@ namespace KIM.SocketServer
             socketWatch.Dispose();
             //socketWatch.Disconnect(true);
         }
-
 
         private void ServerRecMsg(object socketClientPara)
         {
