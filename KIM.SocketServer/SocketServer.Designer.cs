@@ -36,8 +36,6 @@
             this.dockSite4 = new DevComponents.DotNetBar.DockSite();
             this.dockSite1 = new DevComponents.DotNetBar.DockSite();
             this.bar1 = new DevComponents.DotNetBar.Bar();
-            this.panelDockContainer2 = new DevComponents.DotNetBar.PanelDockContainer();
-            this.lv_connhis = new DevComponents.DotNetBar.Controls.ListViewEx();
             this.panelDockContainer1 = new DevComponents.DotNetBar.PanelDockContainer();
             this.lv_client = new System.Windows.Forms.ListView();
             this.NO = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,6 +47,8 @@
             this.nud = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.tbtn_start = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.panelDockContainer2 = new DevComponents.DotNetBar.PanelDockContainer();
+            this.lv_connhis = new DevComponents.DotNetBar.Controls.ListViewEx();
             this.ClientConn = new DevComponents.DotNetBar.DockContainerItem();
             this.ConnHis = new DevComponents.DotNetBar.DockContainerItem();
             this.dockSite2 = new DevComponents.DotNetBar.DockSite();
@@ -68,10 +68,10 @@
             this.dockSite1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.bar1.SuspendLayout();
-            this.panelDockContainer2.SuspendLayout();
             this.panelDockContainer1.SuspendLayout();
             this.panel_conn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud)).BeginInit();
+            this.panelDockContainer2.SuspendLayout();
             this.gp_send.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
@@ -161,37 +161,6 @@
             this.bar1.TabIndex = 0;
             this.bar1.TabStop = false;
             this.bar1.Text = "客户连接";
-            // 
-            // panelDockContainer2
-            // 
-            this.panelDockContainer2.Controls.Add(this.lv_connhis);
-            this.panelDockContainer2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelDockContainer2.Location = new System.Drawing.Point(3, 24);
-            this.panelDockContainer2.Margin = new System.Windows.Forms.Padding(4);
-            this.panelDockContainer2.Name = "panelDockContainer2";
-            this.panelDockContainer2.Size = new System.Drawing.Size(280, 515);
-            this.panelDockContainer2.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelDockContainer2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.panelDockContainer2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.panelDockContainer2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.panelDockContainer2.Style.GradientAngle = 90;
-            this.panelDockContainer2.TabIndex = 5;
-            // 
-            // lv_connhis
-            // 
-            // 
-            // 
-            // 
-            this.lv_connhis.Border.Class = "ListViewBorder";
-            this.lv_connhis.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lv_connhis.DisabledBackColor = System.Drawing.Color.Empty;
-            this.lv_connhis.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lv_connhis.Location = new System.Drawing.Point(0, 0);
-            this.lv_connhis.Margin = new System.Windows.Forms.Padding(4);
-            this.lv_connhis.Name = "lv_connhis";
-            this.lv_connhis.Size = new System.Drawing.Size(280, 515);
-            this.lv_connhis.TabIndex = 5;
-            this.lv_connhis.UseCompatibleStateImageBehavior = false;
             // 
             // panelDockContainer1
             // 
@@ -328,6 +297,37 @@
             this.tbtn_start.UseSelectable = true;
             this.tbtn_start.UseVisualStyleBackColor = true;
             this.tbtn_start.Click += new System.EventHandler(this.tbtn_start_Click);
+            // 
+            // panelDockContainer2
+            // 
+            this.panelDockContainer2.Controls.Add(this.lv_connhis);
+            this.panelDockContainer2.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelDockContainer2.Location = new System.Drawing.Point(3, 24);
+            this.panelDockContainer2.Margin = new System.Windows.Forms.Padding(4);
+            this.panelDockContainer2.Name = "panelDockContainer2";
+            this.panelDockContainer2.Size = new System.Drawing.Size(280, 515);
+            this.panelDockContainer2.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelDockContainer2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.panelDockContainer2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.panelDockContainer2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.panelDockContainer2.Style.GradientAngle = 90;
+            this.panelDockContainer2.TabIndex = 5;
+            // 
+            // lv_connhis
+            // 
+            // 
+            // 
+            // 
+            this.lv_connhis.Border.Class = "ListViewBorder";
+            this.lv_connhis.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lv_connhis.DisabledBackColor = System.Drawing.Color.Empty;
+            this.lv_connhis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_connhis.Location = new System.Drawing.Point(0, 0);
+            this.lv_connhis.Margin = new System.Windows.Forms.Padding(4);
+            this.lv_connhis.Name = "lv_connhis";
+            this.lv_connhis.Size = new System.Drawing.Size(280, 515);
+            this.lv_connhis.TabIndex = 5;
+            this.lv_connhis.UseCompatibleStateImageBehavior = false;
             // 
             // ClientConn
             // 
@@ -564,11 +564,11 @@
             this.dockSite1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.bar1.ResumeLayout(false);
-            this.panelDockContainer2.ResumeLayout(false);
             this.panelDockContainer1.ResumeLayout(false);
             this.panel_conn.ResumeLayout(false);
             this.panel_conn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud)).EndInit();
+            this.panelDockContainer2.ResumeLayout(false);
             this.gp_send.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
