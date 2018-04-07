@@ -63,13 +63,8 @@ namespace KIM.SocketServer
 
         private void AddClient(ListView lv, string client)
         {
-            if (lv.InvokeRequired)
-            {
-                Lv_Recive ms = new Lv_Recive(AddClient);
-                this.Invoke(ms,new object[]{lv, client});
-            }
-            else
-            {
+
+            lv.Invoke(new Action(() => {
                 string[] s = client.Split(',');
                 string itcount = lv.Items.Count + 1 + "";
 
@@ -85,22 +80,17 @@ namespace KIM.SocketServer
                 lvi.SubItems.Add(lvsiip);
                 lvi.SubItems.Add(lvsiport);
 
-
                 lv.Items.Add(lvi);
-            }
+            }));
+
         }
 
         private void AddThread(RichTextBox txb ,string str)
         {
-            if (txb.InvokeRequired)
-            {
-                RTxb_Recive ms = new RTxb_Recive(AddThread);
-                this.Invoke(ms, new object[] {txb, str });
-            }
-            else
-            {
-               txb.Text += str;
-            }
+
+            txb.Invoke(new Action(() => {
+                txb.Text += str;
+            }));
         }
 
 

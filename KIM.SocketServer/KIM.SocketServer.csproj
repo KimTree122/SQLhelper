@@ -55,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsynSocket\AsyncSocket.cs" />
+    <Compile Include="AsynSocket\AsyncTCPServer.cs" />
+    <Compile Include="AsynSocket\Session.cs" />
+    <Compile Include="Model\SocketContent.cs" />
     <Compile Include="SocketClass\SendType.cs" />
     <Compile Include="SocketServer.cs">
       <SubType>Form</SubType>

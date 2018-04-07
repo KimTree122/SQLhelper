@@ -105,14 +105,13 @@ namespace KIM.SocketServer
             foreach (string cN in clientNames)
             {
                 dicSocket[cN].Send(arrSendMsg);
-                delsendMessage(SendType.message, "服务端发送数据");
+                delsendMessage(SendType.message, "服务端发送"+sendMsg);
             }
         }
 
         public void DisConnectSocket()
         {
             socketWatch.Dispose();
-            //socketWatch.Disconnect(true);
         }
 
         private void ServerRecMsg(object socketClientPara)
