@@ -55,10 +55,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsynSocketForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsynSocketForm.Designer.cs">
+      <DependentUpon>AsynSocketForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AsynSocket\AsyncSocket.cs" />
     <Compile Include="AsynSocket\AsyncTCPServer.cs" />
     <Compile Include="AsynSocket\Session.cs" />
     <Compile Include="Model\SocketContent.cs" />
+    <Compile Include="SocketClass\AsyncServer.cs" />
     <Compile Include="SocketClass\SendType.cs" />
     <Compile Include="SocketServer.cs">
       <SubType>Form</SubType>
@@ -69,6 +76,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocketClass\SocketService.cs" />
+    <EmbeddedResource Include="AsynSocketForm.resx">
+      <DependentUpon>AsynSocketForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

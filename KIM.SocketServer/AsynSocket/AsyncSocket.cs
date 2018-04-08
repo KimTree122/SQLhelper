@@ -9,10 +9,24 @@ using System.Text.RegularExpressions;
 
 namespace KIM.SocketServer.AsynSocket
 {
-    class AsyncSocket
+    public class AsyncSocket
     {
+
+
         private Dictionary<string, Session> SessionPool = new Dictionary<string, Session>();
         private Dictionary<string, string> MsgPool = new Dictionary<string, string>();
+
+
+        public delegate void delMessage(SendType msgtype, string msg);
+
+        private delMessage delsendMessage;
+
+
+        public AsyncSocket(delMessage dm)
+        {
+            delsendMessage = dm;
+        }
+
 
         #region 启动WebSocket服务
         /// <summary>
@@ -24,9 +38,11 @@ namespace KIM.SocketServer.AsynSocket
             SockeServer.Bind(new IPEndPoint(IPAddress.Any, port));
             SockeServer.Listen(20);
             SockeServer.BeginAccept(new AsyncCallback(Accept), SockeServer);
-            Console.WriteLine("服务已启动");
-            Console.WriteLine("按任意键关闭服务");
-            Console.ReadLine();
+            delsendMessage(SendType.message, "服务已启动");
+
+            //Console.WriteLine("服务已启动");
+            //Console.WriteLine("按任意键关闭服务");
+            //Console.ReadLine();
         }
         #endregion
 
@@ -61,11 +77,14 @@ namespace KIM.SocketServer.AsynSocket
                 }
                 //准备接受下一个客户端
                 SockeServer.BeginAccept(new AsyncCallback(Accept), SockeServer);
-                Console.WriteLine(string.Format("Client {0} connected", SockeClient.RemoteEndPoint));
+
+                string msg = string.Format("Client {0} connected", SockeClient.RemoteEndPoint);
+                delsendMessage(SendType.message, msg);
+
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error : " + ex.ToString());
+                delsendMessage(SendType.message, "Error : " + ex.ToString());
             }
         }
         #endregion
@@ -109,7 +128,8 @@ namespace KIM.SocketServer.AsynSocket
             catch
             {
                 SockeClient.Disconnect(true);
-                Console.WriteLine("客户端 {0} 断开连接", IP);
+                delsendMessage(SendType.message, "客户端 断开连接"+ IP);
+                //Console.WriteLine("客户端 {0} 断开连接", IP);
                 SessionPool.Remove(IP);
             }
         }

@@ -48,9 +48,6 @@ namespace KIM.SocketServer
             ThreadPool.QueueUserWorkItem(new WaitCallback(this.WatchConnecting),socketWatch);
 
 
-            //threadWatch = new Thread(WatchConnecting);
-            //threadWatch.IsBackground = true;
-            //threadWatch.Start();
             delsendMessage(SendType.message, "服务已经启动");
         }
 
@@ -181,7 +178,7 @@ namespace KIM.SocketServer
                 catch (Exception e)
                 {
 
-                    delsendMessage(0, e.Message);
+                    delsendMessage(SendType.message, e.Message);
                     break;
                 }
 

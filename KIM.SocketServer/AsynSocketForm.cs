@@ -1,52 +1,47 @@
-﻿using DevComponents.DotNetBar;
-using MetroFramework.Forms;
+﻿using KIM.SocketServer.AsynSocket;
+using KIM.SocketServer.SocketClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
 
 namespace KIM.SocketServer
 {
-    public partial class SocketServer : MetroForm
+    public partial class AsynSocketForm : Form
     {
-
-        private SocketService socketService;
-        //private delegate void Lv_Recive(ListView lv, string message);
-        //private delegate void RTxb_Recive(RichTextBox t , string msg);
-
-        public SocketServer()
+        public AsynSocketForm()
         {
             InitializeComponent();
         }
 
-        private void SocketServer_Load(object sender, EventArgs e)
+        private AsyncTCPServer asyncTCPSocket;
+        private AsyncSocket asyncSocket;
+        private AsyncServer asyncServer;
+
+        private void AsynSocketForm_Load(object sender, EventArgs e)
         {
             InitSocket();
-            IntiControl();
-        }
-
-        private void IntiControl()
-        {
-
         }
 
         private void InitSocket()
         {
-            socketService = new SocketService(MessageSwich);
-           
+            //asyncTCPSocket = new AsyncTCPServer(MessageSwich);
+            //asyncSocket = new AsyncSocket(MessageSwich);
+            asyncServer = new AsyncServer(MessageSwich);
+            txb_ip.Text = asyncServer.GetLocalIpv4Adress();
+
         }
 
-        private void MessageSwich(SendType st, string msg) 
+        private void MessageSwich(SendType st, string msg)
         {
             switch (st)
             {
                 case SendType.error:
-                    AddThread(rtb_dataswich ,msg + "\r\n");
+                    AddThread(rtb_dataswich, msg + "\r\n");
                     break;
                 case SendType.stauts:
                     AddClient(lv_client, msg);
@@ -64,8 +59,9 @@ namespace KIM.SocketServer
         private void AddClient(ListView lv, string client)
         {
 
-            lv.Invoke(new Action(() => {
-                string[] s = client.Split(',');
+            lv.Invoke(new Action(() =>
+            {
+                string[] s = client.Split(':');
                 string itcount = lv.Items.Count + 1 + "";
 
                 ListViewItem lvi = new ListViewItem(itcount);
@@ -85,24 +81,22 @@ namespace KIM.SocketServer
 
         }
 
-        private void AddThread(RichTextBox txb ,string str)
+        private void AddThread(RichTextBox txb, string str)
         {
 
-            txb.Invoke(new Action(() => {
-                txb.Text += str;
+            txb.Invoke(new Action(() =>
+            {
+                txb.Text = str+"\r\n"+ txb.Text;
             }));
         }
 
-
         private void tbtn_start_Click(object sender, EventArgs e)
         {
-            int port =int.Parse( nud.Value.ToString());
-            socketService.StartSocket(port);
-        }
+             int port =int.Parse( nud.Value.ToString());
+             //asyncTCPSocket.Start(port);
+             //asyncSocket.start(port);
+             asyncServer.start(txb_ip.Text, port);
 
-        private void tbtn_end_Click(object sender, EventArgs e)
-        {
-            socketService.DisConnectSocket();
         }
 
         private void tbtn_send_Click(object sender, EventArgs e)
@@ -112,13 +106,13 @@ namespace KIM.SocketServer
             {
                 if (item.Checked)
                 {
-                    string ip = "IP:" + item.SubItems[1].Text + "Port:" + item.SubItems[2].Text;
+                    string ip =  item.SubItems[1].Text + ":" + item.SubItems[2].Text;
                     strlist.Add(ip);
                 }
             }
-
-            socketService.SeverSendMsg(strlist, rtxb_send.Text);
+            asyncServer.Send(strlist, rtxb_send.Text);
         }
+
 
     }
 }
