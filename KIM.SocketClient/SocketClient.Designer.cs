@@ -146,7 +146,7 @@
             0,
             0});
             this.nud.Minimum = new decimal(new int[] {
-            60001,
+            60000,
             0,
             0,
             0});
@@ -154,7 +154,7 @@
             this.nud.Size = new System.Drawing.Size(164, 26);
             this.nud.TabIndex = 2;
             this.nud.Value = new decimal(new int[] {
-            60001,
+            60000,
             0,
             0,
             0});

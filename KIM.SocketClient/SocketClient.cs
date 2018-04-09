@@ -1,4 +1,5 @@
-﻿using KIM.SocketClient.SocketClass;
+﻿using KIM.SocketClient.AsynSocket;
+using KIM.SocketClient.SocketClass;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -18,14 +19,17 @@ namespace KIM.SocketClient
             InitializeComponent();
         }
 
-        private SocketClientServer sockClientServer;
-        private delegate void Lv_Recive(ListView lv, string message);
-        private delegate void RTxb_Recive(RichTextBox t, string msg);
+        //private SocketClientServer sockClientServer;
+        private AsynSocketClient asynSocketClient;
+
 
         private void SocketClient_Load(object sender, EventArgs e)
         {
-            sockClientServer = new SocketClientServer(MessageSwich);
-            txb_ip.Text = sockClientServer.GetLocalIpv4Adress().ToString();
+            //sockClientServer = new SocketClientServer(MessageSwich);
+            //txb_ip.Text = sockClientServer.GetLocalIpv4Adress().ToString();
+
+            asynSocketClient = new AsynSocketClient(MessageSwich);
+            txb_ip.Text = asynSocketClient.GetLocalIpv4Adress().ToString();
         }
 
         private void MessageSwich(SendType st, string msg)
@@ -35,7 +39,7 @@ namespace KIM.SocketClient
                 case SendType.error:
                     AddThread(rtb_recive , msg + "\r\n");
                     break;
-                case SendType.stauts:
+                case SendType.addSocket:
                     //AddClient(lv_client, msg);
                     break;
                 case SendType.message:
@@ -47,57 +51,31 @@ namespace KIM.SocketClient
                     break;
             }
         }
+
         private void AddThread(RichTextBox txb, string str)
         {
-            if (txb.InvokeRequired)
-            {
-                RTxb_Recive ms = new RTxb_Recive(AddThread);
-                this.Invoke(ms, new object[] { txb, str });
-            }
-            else
-            {
-                txb.Text += str;
-            }
+            txb.Invoke(new Action(() => {
+                txb.Text = str + "\r\n" + txb.Text;
+            }));
         }
 
         private void AddClient(ListView lv, string client)
         {
-            if (lv.InvokeRequired)
-            {
-                Lv_Recive ms = new Lv_Recive(AddClient);
-                this.Invoke(ms, new object[] { lv, client });
-            }
-            else
-            {
-                string[] s = client.Split(',');
-                string itcount = lv.Items.Count + 1 + "";
-
-                ListViewItem lvi = new ListViewItem(itcount);
-
-                lvi.ImageIndex = 1;
-
-                System.Windows.Forms.ListViewItem.ListViewSubItem lvsiip = new ListViewItem.ListViewSubItem();
-                lvsiip.Text = s[0];
-                System.Windows.Forms.ListViewItem.ListViewSubItem lvsiport = new ListViewItem.ListViewSubItem();
-                lvsiport.Text = s[1];
-
-                lvi.SubItems.Add(lvsiip);
-                lvi.SubItems.Add(lvsiport);
-
-
-                lv.Items.Add(lvi);
-            }
+           
         }
 
         private void tbtn_conn_Click(object sender, EventArgs e)
         {
             int port = int.Parse(nud.Value.ToString());
-            sockClientServer.ConncetToServer(txb_ip.Text,port);
+            //sockClientServer.ConncetToServer(txb_ip.Text,port);
+            asynSocketClient.AsynConncet(txb_ip.Text, port);
         }
 
         private void mbtn_sendmsg_Click(object sender, EventArgs e)
         {
-            sockClientServer.ClientSendMsg(rtb_send.Text, 0);
+            //sockClientServer.ClientSendMsg(rtb_send.Text, 0);
+            asynSocketClient.AsynSend(rtb_send.Text);
+
         }
 
 

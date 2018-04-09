@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsynSocket\AsynConnect.cs" />
+    <Compile Include="AsynSocket\AsynSocketClient.cs" />
     <Compile Include="SocketClass\SendType.cs" />
     <Compile Include="SocketClass\SocketClientServer.cs" />
     <Compile Include="SocketClient.cs">
