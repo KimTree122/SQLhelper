@@ -19,15 +19,10 @@ namespace KIM.SocketClient
             InitializeComponent();
         }
 
-        //private SocketClientServer sockClientServer;
         private AsynSocketClient asynSocketClient;
-
 
         private void SocketClient_Load(object sender, EventArgs e)
         {
-            //sockClientServer = new SocketClientServer(MessageSwich);
-            //txb_ip.Text = sockClientServer.GetLocalIpv4Adress().ToString();
-
             asynSocketClient = new AsynSocketClient(MessageSwich);
             txb_ip.Text = asynSocketClient.GetLocalIpv4Adress().ToString();
         }
@@ -67,15 +62,12 @@ namespace KIM.SocketClient
         private void tbtn_conn_Click(object sender, EventArgs e)
         {
             int port = int.Parse(nud.Value.ToString());
-            //sockClientServer.ConncetToServer(txb_ip.Text,port);
             asynSocketClient.AsynConncet(txb_ip.Text, port);
         }
 
         private void mbtn_sendmsg_Click(object sender, EventArgs e)
         {
-            //sockClientServer.ClientSendMsg(rtb_send.Text, 0);
             asynSocketClient.AsynSend(rtb_send.Text);
-
         }
 
 

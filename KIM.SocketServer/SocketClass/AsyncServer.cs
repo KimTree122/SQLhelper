@@ -83,9 +83,8 @@ namespace KIM.SocketServer.SocketClass
                      socketClient.BeginReceive(buffer,0,buffer.Length,SocketFlags.None ,new AsyncCallback(Recieve),socketClient);
                     //传输字符串,以后扩展文件、命令字节替换数据(分包、粘包处理)
                     //string msg = Encoding.UTF8.GetString(buffer, 0, length);
-                     string msg = Encoding.Default.GetString(buffer,0,length);
-
-                    delSocketMsg(SendType.message, IP+"发送:"+msg);
+                    string msg = Encoding.UTF8.GetString(buffer,0,length);
+                    delSocketMsg(SendType.message,"接收"+ IP+":"+msg);
                 }
                 else
                 {
@@ -116,7 +115,7 @@ namespace KIM.SocketServer.SocketClass
                     if (socketClient != null)
                     {
                         socketClient.Send(msgBuffer);
-                        delSocketMsg(SendType.message, "服务端向 " + IP + " " + msg);
+                        delSocketMsg(SendType.message, "向 " + IP + " 发送" + msg);
                     }
                 }
             }

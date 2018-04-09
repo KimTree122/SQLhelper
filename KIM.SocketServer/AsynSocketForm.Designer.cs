@@ -34,6 +34,8 @@
             this.IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Port = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel_conn = new DevComponents.DotNetBar.PanelEx();
+            this.txb_ip = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tbtn_end = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.nud = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,8 +48,6 @@
             this.lbl_client = new System.Windows.Forms.Label();
             this.tbtn_send = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.tbtn_allsend = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txb_ip = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel_conn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud)).BeginInit();
@@ -67,7 +67,7 @@
             this.groupBox1.Size = new System.Drawing.Size(288, 535);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "连接列表";
             // 
             // lv_client
             // 
@@ -123,6 +123,22 @@
             this.panel_conn.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panel_conn.Style.GradientAngle = 90;
             this.panel_conn.TabIndex = 4;
+            // 
+            // txb_ip
+            // 
+            this.txb_ip.Location = new System.Drawing.Point(88, 18);
+            this.txb_ip.Name = "txb_ip";
+            this.txb_ip.Size = new System.Drawing.Size(164, 26);
+            this.txb_ip.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 16);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "地址:";
             // 
             // tbtn_end
             // 
@@ -312,22 +328,6 @@
             this.tbtn_allsend.Text = "群发";
             this.tbtn_allsend.UseSelectable = true;
             this.tbtn_allsend.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 16);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "地址:";
-            // 
-            // txb_ip
-            // 
-            this.txb_ip.Location = new System.Drawing.Point(88, 18);
-            this.txb_ip.Name = "txb_ip";
-            this.txb_ip.Size = new System.Drawing.Size(164, 26);
-            this.txb_ip.TabIndex = 5;
             // 
             // AsynSocketForm
             // 

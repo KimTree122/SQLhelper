@@ -69,7 +69,7 @@ namespace KIM.SocketClient.AsynSocket
                 try
                 {
                     int length = socket.EndReceive(asyncResult);
-                    socketShow(SendType.message, Encoding.Default.GetString(data,0, length));
+                    socketShow(SendType.message, Encoding.UTF8.GetString(data,0, length));
                     AsynRecieve();
                 }
                 catch (Exception e)
