@@ -503,6 +503,7 @@
             this.lbl_client.Size = new System.Drawing.Size(56, 16);
             this.lbl_client.TabIndex = 6;
             this.lbl_client.Text = "未选中";
+            this.lbl_client.Visible = false;
             // 
             // tbtn_send
             // 

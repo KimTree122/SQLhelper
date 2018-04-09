@@ -90,7 +90,7 @@ namespace KIM.SocketServer
                  ParameterizedThreadStart(ServerRecMsg);
                 Thread thread = new Thread(pts);
                 thread.Start(socConnection);
-                delsendMessage(SendType.stauts, clientIP + "," + clientPort);
+                delsendMessage(SendType.message, clientIP + "," + clientPort);
 
             }
         }

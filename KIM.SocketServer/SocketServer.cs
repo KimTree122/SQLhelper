@@ -16,8 +16,6 @@ namespace KIM.SocketServer
     {
 
         private SocketService socketService;
-        //private delegate void Lv_Recive(ListView lv, string message);
-        //private delegate void RTxb_Recive(RichTextBox t , string msg);
 
         public SocketServer()
         {
@@ -48,7 +46,7 @@ namespace KIM.SocketServer
                 case SendType.error:
                     AddThread(rtb_dataswich ,msg + "\r\n");
                     break;
-                case SendType.stauts:
+                case SendType.addSocket:
                     AddClient(lv_client, msg);
                     break;
                 case SendType.message:

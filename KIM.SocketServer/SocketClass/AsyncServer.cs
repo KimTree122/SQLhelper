@@ -59,7 +59,7 @@ namespace KIM.SocketServer.SocketClass
                 string msg = string.Format("客户端：{0} 已连接",session.IP);
 
                 delSocketMsg(SendType.message,msg);
-                delSocketMsg(SendType.stauts,session.IP);
+                delSocketMsg(SendType.addSocket,session.IP);
             }
             catch (Exception e)
             {
@@ -82,12 +82,15 @@ namespace KIM.SocketServer.SocketClass
                 {
                      socketClient.BeginReceive(buffer,0,buffer.Length,SocketFlags.None ,new AsyncCallback(Recieve),socketClient);
                     //传输字符串,以后扩展文件、命令字节替换数据(分包、粘包处理)
-                    string msg = Encoding.UTF8.GetString(buffer, 0, length);
+                    //string msg = Encoding.UTF8.GetString(buffer, 0, length);
+                     string msg = Encoding.Default.GetString(buffer,0,length);
+
                     delSocketMsg(SendType.message, IP+"发送:"+msg);
                 }
                 else
                 {
                     delSocketMsg(SendType.message, IP + "连接失效");
+                    delSocketMsg(SendType.removeSocket, IP );
                 }
                
             }
@@ -96,6 +99,7 @@ namespace KIM.SocketServer.SocketClass
                 if (socketClient != null) socketClient.Disconnect(true);
                 SessionPool.Remove(IP);
                 delSocketMsg(SendType.message, IP + "连接失效:" + e.Message);
+                delSocketMsg(SendType.removeSocket, IP);
             }
         }
 

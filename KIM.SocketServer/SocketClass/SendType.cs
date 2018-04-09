@@ -8,8 +8,9 @@ namespace KIM.SocketServer
     public enum SendType
 	{
         error = 0,
-        stauts = 1,
-        message = 2,
-        file = 3
+        message = 1,
+        file = 2,
+        addSocket = 3,
+        removeSocket = 4,
 	} 
 }
