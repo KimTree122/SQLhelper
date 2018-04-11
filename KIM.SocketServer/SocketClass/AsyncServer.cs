@@ -1,6 +1,7 @@
 ﻿using KIM.SocketServer.AsynSocket;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -14,8 +15,8 @@ namespace KIM.SocketServer.SocketClass
 
         private DelSocketMsg delSocketMsg;
 
-        private Dictionary<string, Socket> dicSocket = new Dictionary<string, Socket>();
         private Dictionary<string, Session> SessionPool = new Dictionary<string, Session>();
+        //private Dictionary<string, string> DicFileName = new Dictionary<string, string>();
 
         public const int SendBufferSize = 2 * 1024;
         public const int ReceiveBufferSize = 8 * 1024;
@@ -25,7 +26,7 @@ namespace KIM.SocketServer.SocketClass
             delSocketMsg = dsm;
         }
 
-        public void start(string ip, int port)
+        public void Start(string ip, int port)
         {
             Socket sockeServer = new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
             sockeServer.Bind(new IPEndPoint(IPAddress.Parse(ip) ,port));
@@ -38,15 +39,17 @@ namespace KIM.SocketServer.SocketClass
         {
             Socket socketServer = (Socket)ar.AsyncState;
             Socket socketClient = socketServer.EndAccept(ar);
-            byte[] buffer = new byte[4096];
+            byte[] buffer = new byte[1024*1024 * 7];
             try
             {
-                socketClient.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(Recieve), socketClient);
-                Session session = new Session();
-                session.SockeClient = socketClient;
-
-                session.IP = socketClient.RemoteEndPoint.ToString();
-                session.buffer = buffer;
+                socketClient.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None
+                    , new AsyncCallback(Recieve), socketClient);
+                Session session = new Session
+                {
+                    SockeClient = socketClient,
+                    IP = socketClient.RemoteEndPoint.ToString(),
+                    buffer = buffer
+                };
                 lock (SessionPool)
                 {
                     if (SessionPool.ContainsKey(session.IP))
@@ -78,13 +81,18 @@ namespace KIM.SocketServer.SocketClass
             {
                 int length = socketClient.EndReceive(ar);
                 byte[] buffer = SessionPool[IP].buffer;
+
                 if (length > 0) 
                 {
-                     socketClient.BeginReceive(buffer,0,buffer.Length,SocketFlags.None ,new AsyncCallback(Recieve),socketClient);
                     //传输字符串,以后扩展文件、命令字节替换数据(分包、粘包处理)
-                    //string msg = Encoding.UTF8.GetString(buffer, 0, length);
-                    string msg = Encoding.UTF8.GetString(buffer,0,length);
-                    delSocketMsg(SendType.message,"接收"+ IP+":"+msg);
+                    //string msg = Encoding.UTF8.GetString(buffer,0,length);
+                    //delSocketMsg(SendType.message,"接收"+ IP+":"+msg);
+
+                    SwichRecieveData(buffer, length, IP);
+
+                    socketClient.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None
+                        , new AsyncCallback(Recieve), socketClient);
+
                 }
                 else
                 {
@@ -101,6 +109,33 @@ namespace KIM.SocketServer.SocketClass
                 delSocketMsg(SendType.removeSocket, IP);
             }
         }
+
+        //0：命令，1：信息，2：文件
+        private void SwichRecieveData(byte[] buffer,int length,string IP)
+        {
+            int msgtyep = buffer[0];
+            switch (msgtyep)
+            {
+                case 1:
+                    string msg = Encoding.UTF8.GetString(buffer, 1, length-1);
+                    delSocketMsg(SendType.message, "接收信息：" + IP + ":" + msg);
+                    break;
+                case 2:
+
+                    string fileSavePath = @"C:\gitweb\alinq.zip";      
+                    using (FileStream fs = new FileStream(fileSavePath, FileMode.Create))
+                    {
+                        fs.Write(buffer, 1, length - 1);
+                    }
+
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+
 
         public void Send(List<string> IPlist,string msg)
         {

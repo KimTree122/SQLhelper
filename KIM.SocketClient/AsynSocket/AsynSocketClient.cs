@@ -1,6 +1,7 @@
 ﻿using KIM.SocketClient.SocketClass;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -42,22 +43,68 @@ namespace KIM.SocketClient.AsynSocket
             }, null);
         }
 
-        public void AsynSend(string msg)
+
+        public void AsynSend(string msg , int sendtype)
         {
             if (socket == null || string.IsNullOrWhiteSpace(msg)) return;
+            switch (sendtype)
+            {
+                case 0:
+                    break;
+                case 1:
 
-            byte[] date = Encoding.Default.GetBytes(msg);
+                    SendMessage(msg);
+                    break;
+                case 2:
+                    string fileName = Path.GetFileName(msg);
+                    SendMessage("发送文件:"+ fileName);
+                    byte[] file = SendFile(msg);
+                    PriAsynSend(fileName, file);
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+
+        private void SendMessage(string msg)
+        {
+            byte[] data = Encoding.UTF8.GetBytes(msg);
+            byte[] sendbyte = new byte[data.Length + 1];
+            sendbyte[0] = 1;
+            Buffer.BlockCopy(data, 0, sendbyte, 1, data.Length);
+            PriAsynSend(msg, sendbyte);
+        }
+
+        private void PriAsynSend(string msg,  byte[] date)
+        {
             try
             {
                 socket.BeginSend(date, 0, date.Length, SocketFlags.None, asynResult =>
                 {
                     int length = socket.EndSend(asynResult);
-                    socketShow(SendType.message, "向服务端发送:" + msg);
+                    
                 }, null);
+                socketShow(SendType.message, "发送成功:" + msg);
             }
             catch (Exception e)
             {
                 socketShow(SendType.error, "发送失败" + e.Message);
+            }
+        }
+
+
+        public byte[] SendFile(string path)
+        {
+            using (FileStream fs = new FileStream(path, FileMode.Open))
+            {
+                byte[] arrFile = new byte[1024*1024 * 7];
+                int length = fs.Read(arrFile, 0, arrFile.Length);    
+                byte[] arrFileSend = new byte[length + 1];
+                arrFileSend[0] = 2;  
+                Buffer.BlockCopy(arrFile, 0, arrFileSend, 1, length);
+                return arrFileSend;
             }
         }
 
@@ -74,12 +121,12 @@ namespace KIM.SocketClient.AsynSocket
                 }
                 catch (Exception e)
                 {
-                    socketShow(SendType.error, "接收失败" + e.Message);
+                    socketShow(SendType.error, "连接失效:" + e.Message);
+                    socket = null;
                 }
             }, null);
 
         }
-
 
 
         public IPAddress GetLocalIpv4Adress()

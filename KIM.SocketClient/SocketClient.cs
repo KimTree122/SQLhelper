@@ -67,9 +67,24 @@ namespace KIM.SocketClient
 
         private void mbtn_sendmsg_Click(object sender, EventArgs e)
         {
-            asynSocketClient.AsynSend(rtb_send.Text);
+            asynSocketClient.AsynSend(rtb_send.Text, 1);
         }
 
+        private void lbl_path_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = "C:\\360极速浏览器下载";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                txb_filepath.Text = ofd.FileName;
+            }
+        }
 
+        private void mbtn_filesend_Click(object sender, EventArgs e)
+        {
+            //asynSocketClient.AsynSend(rtb_send.Text, 1, null);
+            //asynSocketClient.AsynSend("发送文件", 3, txb_filepath.Text);
+            asynSocketClient.AsynSend(txb_filepath.Text, 2);
+        }
     }
 }

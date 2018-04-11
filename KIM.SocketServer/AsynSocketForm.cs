@@ -18,11 +18,8 @@ namespace KIM.SocketServer
             InitializeComponent();
         }
 
-        //private AsyncTCPServer asyncTCPSocket;
-        //private AsyncSocket asyncSocket;
         private AsyncServer asyncServer;
         private List<string> socketItems = new List<string>();
-
 
 
         private void AsynSocketForm_Load(object sender, EventArgs e)
@@ -32,12 +29,8 @@ namespace KIM.SocketServer
 
         private void InitSocket()
         {
-            //asyncTCPSocket = new AsyncTCPServer(MessageSwich);
-            //asyncSocket = new AsyncSocket(MessageSwich);
             asyncServer = new AsyncServer(MessageSwich);
-
             txb_ip.Text = asyncServer.GetLocalIpv4Adress();
-
         }
 
         private void MessageSwich(SendType st, string msg)
@@ -94,9 +87,9 @@ namespace KIM.SocketServer
 
                 lvi.ImageIndex = lv.Items.Count % 2;
 
-                System.Windows.Forms.ListViewItem.ListViewSubItem lvsiip = new ListViewItem.ListViewSubItem();
+                ListViewItem.ListViewSubItem lvsiip = new ListViewItem.ListViewSubItem();
                 lvsiip.Text = s[0];
-                System.Windows.Forms.ListViewItem.ListViewSubItem lvsiport = new ListViewItem.ListViewSubItem();
+                ListViewItem.ListViewSubItem lvsiport = new ListViewItem.ListViewSubItem();
                 lvsiport.Text = s[1];
 
                 lvi.SubItems.Add(lvsiip);
@@ -119,7 +112,7 @@ namespace KIM.SocketServer
         private void tbtn_start_Click(object sender, EventArgs e)
         {
              int port =int.Parse( nud.Value.ToString());
-             asyncServer.start(txb_ip.Text, port);
+             asyncServer.Start(txb_ip.Text, port);
         }
 
         private void tbtn_send_Click(object sender, EventArgs e)

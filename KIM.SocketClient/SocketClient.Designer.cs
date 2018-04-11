@@ -309,6 +309,7 @@
             this.lbl_path.TabIndex = 7;
             this.lbl_path.TabStop = true;
             this.lbl_path.Text = "文件路径：";
+            this.lbl_path.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_path_LinkClicked);
             // 
             // mbtn_filesend
             // 
@@ -319,9 +320,10 @@
             this.mbtn_filesend.Size = new System.Drawing.Size(78, 30);
             this.mbtn_filesend.Style = MetroFramework.MetroColorStyle.Lime;
             this.mbtn_filesend.TabIndex = 6;
-            this.mbtn_filesend.Text = "连接";
+            this.mbtn_filesend.Text = "传输";
             this.mbtn_filesend.UseSelectable = true;
             this.mbtn_filesend.UseVisualStyleBackColor = true;
+            this.mbtn_filesend.Click += new System.EventHandler(this.mbtn_filesend_Click);
             // 
             // txb_filepath
             // 
