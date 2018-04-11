@@ -39,7 +39,7 @@ namespace KIM.SocketServer.SocketClass
         {
             Socket socketServer = (Socket)ar.AsyncState;
             Socket socketClient = socketServer.EndAccept(ar);
-            byte[] buffer = new byte[1024*1024 * 7];
+            byte[] buffer = new byte[1024*1024 * 5];
             try
             {
                 socketClient.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None

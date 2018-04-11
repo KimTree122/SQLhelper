@@ -99,7 +99,7 @@ namespace KIM.SocketClient.AsynSocket
         {
             using (FileStream fs = new FileStream(path, FileMode.Open))
             {
-                byte[] arrFile = new byte[1024*1024 * 7];
+                byte[] arrFile = new byte[1024*1024 * 5];
                 int length = fs.Read(arrFile, 0, arrFile.Length);    
                 byte[] arrFileSend = new byte[length + 1];
                 arrFileSend[0] = 2;  

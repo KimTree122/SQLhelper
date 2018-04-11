@@ -67,7 +67,12 @@ namespace KIM.SocketClient
 
         private void mbtn_sendmsg_Click(object sender, EventArgs e)
         {
-            asynSocketClient.AsynSend(rtb_send.Text, 1);
+            //asynSocketClient.AsynSend(rtb_send.Text, 1);
+            FileByte fileByte = new FileByte();
+            string path = "C:\\gitweb\\abc.rar";
+            fileByte.WriteFile(path, bytelist);
+
+
         }
 
         private void lbl_path_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -80,11 +85,18 @@ namespace KIM.SocketClient
             }
         }
 
+        private List<byte[]> bytelist = new List<byte[]>();
+
         private void mbtn_filesend_Click(object sender, EventArgs e)
         {
             //asynSocketClient.AsynSend(rtb_send.Text, 1, null);
             //asynSocketClient.AsynSend("发送文件", 3, txb_filepath.Text);
-            asynSocketClient.AsynSend(txb_filepath.Text, 2);
+            //asynSocketClient.AsynSend(txb_filepath.Text, 2);
+            FileByte fileByte = new FileByte();
+            bytelist = fileByte.ReadFilebyte(txb_filepath.Text);
+            int div = bytelist.Count;
+            rtb_send.Text = div + "";
+
         }
     }
 }
