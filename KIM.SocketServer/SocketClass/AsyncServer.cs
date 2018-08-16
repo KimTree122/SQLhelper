@@ -16,7 +16,6 @@ namespace KIM.SocketServer.SocketClass
         private DelSocketMsg delSocketMsg;
 
         private Dictionary<string, Session> SessionPool = new Dictionary<string, Session>();
-        //private Dictionary<string, string> DicFileName = new Dictionary<string, string>();
 
         public const int SendBufferSize = 2 * 1024;
         public const int ReceiveBufferSize = 8 * 1024;
@@ -28,11 +27,19 @@ namespace KIM.SocketServer.SocketClass
 
         public void Start(string ip, int port)
         {
-            Socket sockeServer = new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
-            sockeServer.Bind(new IPEndPoint(IPAddress.Parse(ip) ,port));
-            sockeServer.Listen(20);
-            sockeServer.BeginAccept(new AsyncCallback(Accept),sockeServer);
-            delSocketMsg(SendType.message, "服务已启动");
+            try
+            {
+                Socket sockeServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                sockeServer.Bind(new IPEndPoint(IPAddress.Parse(ip), port));
+                sockeServer.Listen(20);
+                sockeServer.BeginAccept(new AsyncCallback(Accept), sockeServer);
+                delSocketMsg(SendType.message, "服务已启动");
+            }
+            catch (Exception e)
+            {
+                delSocketMsg(SendType.error, "服务停止:"+e.Message+"端口："+port);
+            }
+            
         }
 
         private void Accept(IAsyncResult ar)

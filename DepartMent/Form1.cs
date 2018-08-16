@@ -160,11 +160,11 @@ namespace DepartMent
             cmb_type.ValueMember = "authid";
 
 
-            Image im = Image.FromFile(Application.StartupPath + "/Image/ic_begintran.png");
-            Image im2 = Image.FromFile(Application.StartupPath + "/Image/ic_distribution.png");
-            treeView.ImageList = new ImageList();
-            treeView.ImageList.Images.Add(im);
-            treeView.ImageList.Images.Add(im2);
+            //Image im = Image.FromFile(Application.StartupPath + "/Image/ic_begintran.png");
+            //Image im2 = Image.FromFile(Application.StartupPath + "/Image/ic_distribution.png");
+            //treeView.ImageList = new ImageList();
+            //treeView.ImageList.Images.Add(im);
+            //treeView.ImageList.Images.Add(im2);
 
         }
 

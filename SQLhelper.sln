@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLhelper", "SQLhelper\SQLhelper.csproj", "{A8CF58E5-C516-4460-BC26-91F2ACC22F5D}"
 EndProject
@@ -14,6 +14,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KIM.SocketServer", "KIM.SocketServer\KIM.SocketServer.csproj", "{D1160D10-5882-4524-85A8-9D6EA5B7A4B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KIM.SocketClient", "KIM.SocketClient\KIM.SocketClient.csproj", "{CE4D4570-31FB-42A8-87CC-8DA5B02973F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncSocketHelper", "AsyncSocketHelper\AsyncSocketHelper.csproj", "{D16497C3-6EE5-489E-96AE-C563FAA5AFE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNDBsys.WebUI", "KNDBsys.WebUI\KNDBsys.WebUI.csproj", "{56C13816-8B5D-42D8-A9F7-D09AD5342A43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KNDBsys", "KNDBsys", "{7289A4F7-D15B-4B6E-ABD9-3BADEA67B5AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNDBsys.BLL", "KNDBsys.BLL\KNDBsys.BLL.csproj", "{88857003-38AF-4719-8171-91DF2C55ECFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNDBsys.DAL", "KNDBsys.DAL\KNDBsys.DAL.csproj", "{C938BB66-CB20-4B8D-BB64-38FF0AAD149C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,8 +55,32 @@ Global
 		{CE4D4570-31FB-42A8-87CC-8DA5B02973F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE4D4570-31FB-42A8-87CC-8DA5B02973F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE4D4570-31FB-42A8-87CC-8DA5B02973F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D16497C3-6EE5-489E-96AE-C563FAA5AFE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D16497C3-6EE5-489E-96AE-C563FAA5AFE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D16497C3-6EE5-489E-96AE-C563FAA5AFE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D16497C3-6EE5-489E-96AE-C563FAA5AFE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C13816-8B5D-42D8-A9F7-D09AD5342A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C13816-8B5D-42D8-A9F7-D09AD5342A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C13816-8B5D-42D8-A9F7-D09AD5342A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C13816-8B5D-42D8-A9F7-D09AD5342A43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88857003-38AF-4719-8171-91DF2C55ECFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88857003-38AF-4719-8171-91DF2C55ECFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88857003-38AF-4719-8171-91DF2C55ECFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88857003-38AF-4719-8171-91DF2C55ECFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C938BB66-CB20-4B8D-BB64-38FF0AAD149C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C938BB66-CB20-4B8D-BB64-38FF0AAD149C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C938BB66-CB20-4B8D-BB64-38FF0AAD149C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C938BB66-CB20-4B8D-BB64-38FF0AAD149C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{56C13816-8B5D-42D8-A9F7-D09AD5342A43} = {7289A4F7-D15B-4B6E-ABD9-3BADEA67B5AE}
+		{88857003-38AF-4719-8171-91DF2C55ECFF} = {7289A4F7-D15B-4B6E-ABD9-3BADEA67B5AE}
+		{C938BB66-CB20-4B8D-BB64-38FF0AAD149C} = {7289A4F7-D15B-4B6E-ABD9-3BADEA67B5AE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25873020-88F6-4B9B-836F-9AF37EE3CB7F}
 	EndGlobalSection
 EndGlobal

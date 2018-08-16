@@ -20,7 +20,6 @@ namespace KIM.SocketClient.AsynSocket
             socketShow = show;
         }
 
-
         public void AsynConncet(string IP, int port)
         {
             if (socket != null) return;
@@ -93,7 +92,6 @@ namespace KIM.SocketClient.AsynSocket
                 socketShow(SendType.error, "发送失败" + e.Message);
             }
         }
-
 
         public byte[] SendFile(string path)
         {
