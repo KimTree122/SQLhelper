@@ -26,5 +26,11 @@ namespace KNDBsys.WebUI.Controllers
 
             return View();
         }
+
+        public ActionResult MainView()
+        {
+            return View();
+        }
+
     }
 }
