@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KNDBsys.BLL.BaseInfo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace KNDBsys.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             return View();
@@ -29,6 +31,8 @@ namespace KNDBsys.WebUI.Controllers
 
         public ActionResult MainView()
         {
+            UserData user = new UserData();
+            string str = user.GetAllUser();
             return View();
         }
 
