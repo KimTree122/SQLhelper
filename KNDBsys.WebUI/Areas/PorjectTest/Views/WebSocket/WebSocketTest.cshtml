@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "WebSocketTest";
+    Layout = "~/Views/Shared/_LayoutEasyUI.cshtml";
+}
+
+<script type="text/javascript">
+    var ws;
+    $().ready(function () {
+        $('#conn').click(function () {
+            //ws = new WebSocket('ws://' + window.location.hostname + ':' + window.location.port + '/Handler1.ashx?user=' + $("#user").val());
+            ws = new WebSocket('ws://192.168.61.65:7418/kimWebSocket.ashx?user=' + $("#user").val());
+
+            $('#msg').append('<p>连接中</p>');
+
+            ws.onopen = function () {
+                $('#msg').append('<p>连接完成</p>');
+            }
+            ws.onmessage = function (evt) {
+                $('#msg').append('<p>' + evt.data + '</p>');
+            }
+            ws.onerror = function (evt) {
+                $('#msg').append('<p>' + JSON.stringify(evt) + '</p>');
+            }
+            ws.onclose = function () {
+                $('#msg').append('<p>已关闭</p>');
+            }
+        });
+
+        $('#close').click(function () {
+            ws.close();
+        });
+
+        $('#send').click(function () {
+            if (ws.readyState === WebSocket.OPEN) {
+                ws.send($("#to").val() + "|" + $('#content').val());
+            }
+            else {
+                $('#tips').text('连接关闭');
+            }
+        });
+
+    });
+
+</script>
+
+<div>
+    <input id="user" type="text" />
+    <input id="conn" type="button" value="connect" />
+    <input id="close" type="button" value="close" /><br />
+    <span id="tips"></span>
+    <input id="content" type="text" />
+    <input id="send" type="button" value="send" /><br />
+    <input id="to" type="text" />tag
+    <div id="msg">
+    </div>
+</div>
+

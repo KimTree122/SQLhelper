@@ -15,7 +15,7 @@
     <AssemblyName>KNDBsys.WebUI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -114,6 +114,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\PorjectTest\Controllers\WebSocketController.cs" />
+    <Compile Include="Areas\PorjectTest\PorjectTestAreaRegistration.cs" />
+    <Compile Include="Areas\PorjectTest\WebSocketServer.ashx.cs">
+      <DependentUpon>WebSocketServer.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -590,6 +595,10 @@
     <Content Include="Content\Images\Logo.psd" />
     <Content Include="Content\Images\sunny\Logo.psd" />
     <Content Include="Content\Images\sunny\未标题-1.psd" />
+    <Content Include="Areas\PorjectTest\Views\web.config" />
+    <Content Include="Areas\PorjectTest\Views\WebSocket\WebSocketTest.cshtml" />
+    <Content Include="Areas\PorjectTest\WebSocketServer.ashx" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -628,6 +637,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\PorjectTest\Models\" />
+    <Folder Include="Areas\PorjectTest\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -661,7 +672,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4813</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4612/</IISUrl>
+          <IISUrl>http://192.168.61.65:7418/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
