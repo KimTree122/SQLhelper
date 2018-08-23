@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
@@ -136,6 +137,77 @@ namespace KNDBsys.WebUI.Areas.PorjectTest
             }
         }
 
+        /// <summary>
+        /// 委托处理函数定义
+        /// </summary>
+        /// <param name="context">当前WebSocket上下文</param>
+        /// <returns></returns>
+        public async Task DoWork(AspNetWebSocketContext context)
+        {
+            //1.获取当前WebSocket 对象
+            WebSocket socket = context.WebSocket;
+            string filename = "";
+            //2.监视相应
+            while (true)
+            {
+                /*
+                 * 此处缓存数组指定读取客户端数据的长度
+                 * 如果客户端发送数据超过当前缓存区，则会读取多次
+                 */
+                ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024 * 256]);
+                //接收客户端信息
+                CancellationToken token;
+                WebSocketReceiveResult result = await socket.ReceiveAsync(buffer, token);
+                if (socket.State == WebSocketState.Open)
+                {
+                    //判断是否已经到了最后
+                    int curLength = Math.Min(buffer.Array.Length, result.Count);
+                    //判断用户传入的类型进行处理
+                    if (result.MessageType == WebSocketMessageType.Text)
+                    {
+                        string msg = Encoding.UTF8.GetString(buffer.Array, 0, curLength);
+                        filename = msg;
+                        buffer = new ArraySegment<byte>(Encoding.UTF8.GetBytes("接收文件名成功:" + filename));
+                        await socket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
+                    }
+                    else if (result.MessageType == WebSocketMessageType.Binary)
+                    {
+                        //创建并保存文件,如果上传成功，返回当前接收到的文件大小
+                        string msg = SaveFile(filename, buffer, curLength);
+                        buffer = new ArraySegment<byte>(Encoding.UTF8.GetBytes(curLength.ToString()));
+                        await socket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
+                    }
+                }
+                else { break; }
+            }
+        }
+        /// <summary>
+        /// 追加二进制数据到文件
+        /// </summary>
+        public string SaveFile(string file, ArraySegment<byte> buffer, int Length)
+        {
+            //去除文件名中的前后空格
+            file = file.Trim();
+            string fullname = @"F:\JavaScript_Solution\H5Solition\UploadWebForm\content\" + file;
+            try
+            {
+                FileStream fs = new FileStream(fullname, FileMode.Append, FileAccess.Write);
+                try
+                {
+                    byte[] result = buffer.ToArray();
+                    fs.Write(result, 0, Length);
+                }
+                finally
+                {
+                    fs.Close();
+                }
+                return "保存文件成功";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
 
         public bool IsReusable
         {
