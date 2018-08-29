@@ -75,6 +75,10 @@
 
       });
 $(function () {
+    bindMenu();
+});
+
+function bindMenu() {
     /*为选项卡绑定右键*/
     $(".tabs li").bind('contextmenu', function (e) {
         /*选中当前触发事件的选项卡 */
@@ -87,7 +91,7 @@ $(function () {
         });
         return false;
     });
-});
+}
 
 
 
@@ -100,12 +104,14 @@ function addTab(subtitle, url, icon) {
             closable: true,
             icon: icon
         });
+        
     } else {
         $("#mainTab").tabs('select', subtitle);
         //$("#tab_menu-tabrefresh").trigger("click");
     }
     //$(".layout-button-left").trigger("click");
     //tabClose();
+    bindMenu();
 }
 function createFrame(url) {
     var s = '<iframe frameborder="0" src="' + url + '" scrolling="auto" style="width:100%; height:99%"></iframe>';

@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "用户登陆";
+    Layout = "~/Views/Shared/_LayoutEasyUI.cshtml";
+}
+
+<style type="text/css">
+</style>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("#LoginSys").click(function () {
+            LoginSys();
+        });
+        $("#UserName").keydown(function (e) {
+            var curkey = e.which;
+            if (curkey === 13) {
+                LoginSys();
+                return false;
+            }
+        });
+        $("#Password").keydown(function (e) {
+            var curkey = e.which;
+            if (curkey === 13) {
+                LoginSys();
+                return false;
+            }
+        });
+        $("#ValidateCode").keydown(function (e) {
+            var curkey = e.which;
+            if (curkey === 13) {
+                LoginSys();
+                return false;
+            }
+        });
+
+
+
+    });
+
+    function LoginSys() {
+        $("#mes").html("");
+        $("#UserName").removeClass("input-validation-error");
+        $("#Password").removeClass("input-validation-error");
+        $("#ValidateCode").removeClass("input-validation-error");
+        if ($.trim($("#UserName").val()) === "") {
+            $("#UserName").addClass("input-validation-error").focus();
+            $("#mes").html("用户名不能为空！");
+            return;
+        }
+        if ($.trim($("#Password").val()) === "") {
+            $("#Password").addClass("input-validation-error").focus();
+            $("#mes").html("密码不能为空！");
+            return;
+        }
+        if ($.trim($("#ValidateCode").val()) === "") {
+            $("#ValidateCode").addClass("input-validation-error").focus();
+            $("#mes").html("验证码不能为空！");
+            return;
+        }
+        $("#Loading").show();
+
+        var data = { "userid": $("#UserName").val(), "pwd": $("#Password").val(), "vcode": $("#ValidateCode").val() }
+
+        $.post("/Home/CheckAccount", data, function (stauts) {
+            if (stauts === "ok") {
+                window.location.href = "/Home/MainView";
+            } else {
+                alert(stauts);
+            }
+        });
+        $("#Loading").hide();
+        return false;
+    }
+
+</script>
+
+<div>
+    <div>
+        <div class="define-head" style="height: 65px;">
+            <div class="define-logo">
+                <div id="LoginTopLine"></div>
+                <div id="LoginBotoomLine"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:100px;">
+        <div class="row" style="text-align:center;">
+            <div class="col-sm-6 col-xs-12">
+                <img src="/Content/Images/account.jpg" class="img-rounded">
+            </div>
+            <div class="col-sm-6 col-xs-8">
+
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <input type="text" class="form-control" id="acount" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <input type="password" class="form-control" id="pwd" placeholder="密码">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <input style="width: 50px" type="text" name="ValidateCode" id="ValidateCode" />
+                        <img id="codeImg" alt="刷新验证码！" style="margin-bottom: -8px; cursor: pointer;" src="/Home/VerifyCode" onclick="this.src=this.src+'?'" />
+                        <a href="javascript:$('#codeImg').trigger('click')">看不清？</a>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button type="submit" class="btn btn-primary">登陆</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

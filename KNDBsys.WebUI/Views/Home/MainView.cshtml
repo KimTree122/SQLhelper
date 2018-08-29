@@ -18,12 +18,40 @@
 
         $(document).ready(function () {
 
+            LoadAuth();
 
-
+            bindTreeClick();
 
         });
 
+        function LoadAuth() {
+            $.post("./GetAuthoriy", { userid: 1,port:"Web" }, function (result) {
+                var str = JSON.parse(result);
+                $("#maintree").tree({
+                    data: str
+                });
+            });
+        }
+
+        function bindTreeClick() {
+            $("#maintree").tree({
+                onClick: function (node) {
+                    $("#maintree").tree(node.state === 'closed' ? 'expand' : 'collapse', node.target);
+                    node.state = node.state === 'closed' ? 'open' : 'closed';
+                    var url = node.attributes.url;
+                    if (url.length > 0) {
+                        addTab(node.text, url, node.iconCls);
+                    }
+                }
+            });
+        }
+
     </script>
+
+    <style type="text/css">
+
+
+    </style>
 
 
 </head>
@@ -39,8 +67,8 @@
             </div>
         </div>
     </div>
-    
-    <div data-options="region:'west',split:true,title:'功能列表'" style="width:200px;padding:10px;">
+
+    <div data-options="region:'west',split:true,title:'功能列表'" style="width:200px;">
         <div class="easyui-panel" style="padding:5px">
             <ul id="maintree" class="easyui-tree" data-options="animate:true,dnd:true,lines:true,fit:true"></ul>
         </div>
@@ -52,7 +80,7 @@
     </div>
     <div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">
         <div style="text-align:center">
-            <a href="#" id="btn_out" class="easyui-linkbutton c6" style="width:120px">注销</a>
+            <a href="#" id="btn_out" class="easyui-linkbutton" onclick="LoadAuth()" style="width:120px">注销</a>
         </div>
     </div>
 
@@ -62,13 +90,10 @@
             <div title="我的桌面" class="tabs-selected" style="overflow: hidden; background:#fff">
                 <iframe scrolling="auto" frameborder="0" src="" style="width: 100%; height: 100%;"></iframe>
             </div>
-            <div title="你的桌面" class="tabs-selected" data-options="closable:true" style="overflow: hidden; background:#fff">
-                <iframe scrolling="auto" frameborder="0" src="" style="width: 100%; height: 100%;"></iframe>
-            </div>
-
         </div>
 
     </div>
+
     <div id="tab_menu" class="easyui-menu" style="width: 150px;">
         <div id="tab_menu-tabrefresh" data-options="iconCls:'icon-reload'">
             刷新
@@ -96,5 +121,6 @@
         <div id="menu" class="easyui-menu" style="width: 150px;">
         </div>
     </div>
+
 </body>
 </html>

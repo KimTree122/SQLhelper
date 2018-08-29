@@ -47,7 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseInfo\UserData.cs" />
+    <Compile Include="BaseInfo\Authority_Ser.cs" />
+    <Compile Include="BaseInfo\User_Ser.cs" />
     <Compile Include="Comment\TreeNodeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

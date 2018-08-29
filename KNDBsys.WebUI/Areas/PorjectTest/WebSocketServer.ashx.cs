@@ -29,7 +29,7 @@ namespace KNDBsys.WebUI.Areas.PorjectTest
     }
 
     /// <summary>
-    /// kimWebSocket 的摘要说明
+    /// WebSocketServer 的摘要说明
     /// </summary>
     public class WebSocketServer : IHttpHandler
     {
