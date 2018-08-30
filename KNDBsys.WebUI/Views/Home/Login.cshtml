@@ -5,15 +5,24 @@
 }
 
 <style type="text/css">
+    .panel-title {
+        text-align:center;
+        font-size:large;
+    }
 </style>
 
 <script type="text/javascript">
+
+    $(document).ready(function () {
+        reLoadimg();
+        LoadAccount();
+    });
 
     $(function () {
         $("#LoginSys").click(function () {
             LoginSys();
         });
-        $("#UserName").keydown(function (e) {
+        $("#account").keydown(function (e) {
             var curkey = e.which;
             if (curkey === 13) {
                 LoginSys();
@@ -34,18 +43,15 @@
                 return false;
             }
         });
-
-
-
     });
 
     function LoginSys() {
         $("#mes").html("");
-        $("#UserName").removeClass("input-validation-error");
+        $("#account").removeClass("input-validation-error");
         $("#Password").removeClass("input-validation-error");
         $("#ValidateCode").removeClass("input-validation-error");
-        if ($.trim($("#UserName").val()) === "") {
-            $("#UserName").addClass("input-validation-error").focus();
+        if ($.trim($("#account").val()) === "") {
+            $("#account").addClass("input-validation-error").focus();
             $("#mes").html("用户名不能为空！");
             return;
         }
@@ -61,10 +67,12 @@
         }
         $("#Loading").show();
 
-        var data = { "userid": $("#UserName").val(), "pwd": $("#Password").val(), "vcode": $("#ValidateCode").val() }
+        var data = { "userid": $("#account").val(), "pwd": $("#Password").val(), "vcode": $("#ValidateCode").val() };
 
         $.post("/Home/CheckAccount", data, function (stauts) {
             if (stauts === "ok") {
+                $("#ValidateCode").val("");
+                setAccount();
                 window.location.href = "/Home/MainView";
             } else {
                 alert(stauts);
@@ -72,6 +80,30 @@
         });
         $("#Loading").hide();
         return false;
+    }
+
+    function setAccount() {
+
+        var check = $("#remeber").prop('checked');
+        if (check) {
+            $.cookie('account', $("#account").val());
+        }
+    }
+
+    function LoadAccount() {
+        var account = $.cookie("account");
+        if (account !== undefined) {
+            $("#account").textbox('setValue', account); 
+        }
+    }
+
+    function CreanAccount() {
+        $.cookie("account", "");
+        $('#account').textbox('setValue',"");
+    }
+
+    function reLoadimg() {
+        jQuery("#codeImg").trigger("click");
     }
 
 </script>
@@ -87,39 +119,45 @@
         </div>
     </div>
 
-    <div class="container" style="margin-top:100px;">
+    <div class="container" style="margin-top:100px; padding:20px;">
         <div class="row" style="text-align:center;">
             <div class="col-sm-6 col-xs-12">
                 <img src="/Content/Images/account.jpg" class="img-rounded">
             </div>
-            <div class="col-sm-6 col-xs-8">
+            <div class="col-sm-6 col-xs-12">
 
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
-                            <input type="text" class="form-control" id="acount" placeholder="用户名">
+                <div class="easyui-panel" title="系统登陆" style="width:100%;padding:10px 10px;">
+                    <div style="margin-bottom:10px">
+                        <input id="account" class="easyui-textbox" style="width:100%;height:40px;padding:12px" data-options="prompt:'用户名',iconCls:'icon-man',iconWidth:38">
+                    </div>
+                    <div style="margin-bottom:10px">
+                        <input class="easyui-textbox" id="Password" type="password" style="width:100%;height:40px;padding:12px" data-options="iconCls:'icon-lock',iconWidth:38">
+                    </div>
+
+                    <div style="margin-bottom:10px;">
+                        <input id="ValidateCode" class="easyui-textbox" style="width:50%; height:40px;padding:12px;" data-options="prompt:'验证码'" />
+                        <img id="codeImg" alt="刷新验证码！" style=" cursor: pointer;" src="/Home/VerifyCode" onclick="this.src=this.src+'?'" />
+                    </div>
+
+                    <div style="margin-bottom:10px">
+
+                        <div class="checkbox" style="border:none">
+                            <label>
+                                <input id="remeber" onclick="setAcount()" type="checkbox"> 记住账号
+                                <a href="javascript:CreanAccount()">清除账号</a>
+                            </label>
                         </div>
+                        
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
-                            <input type="password" class="form-control" id="pwd" placeholder="密码">
-                        </div>
+                    <div id="mes" class="field-validation-error" style="color:#ff0000" >
                     </div>
-
-                    <div class="form-group">
-
-                        <input style="width: 50px" type="text" name="ValidateCode" id="ValidateCode" />
-                        <img id="codeImg" alt="刷新验证码！" style="margin-bottom: -8px; cursor: pointer;" src="/Home/VerifyCode" onclick="this.src=this.src+'?'" />
-                        <a href="javascript:$('#codeImg').trigger('click')">看不清？</a>
-
+                    <div id="Loading" style="display: none" class='panel-loading'><font color='#000'>加载中...</font></div>
+                    <div>
+                        <a href="#" id="LoginSys" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:100%;">
+                            <span style="font-size:14px;">登陆</span>
+                        </a>
                     </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
-                            <button type="submit" class="btn btn-primary">登陆</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
 
             </div>
         </div>
