@@ -673,6 +673,10 @@
       <Project>{E1426431-7865-478B-8964-90EA31579B71}</Project>
       <Name>KNDBsys.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KNDBsys.ViewModel\KNDBsys.ViewModel.csproj">
+      <Project>{245a0ac3-5800-4666-b9ef-b80943947e0b}</Project>
+      <Name>KNDBsys.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
