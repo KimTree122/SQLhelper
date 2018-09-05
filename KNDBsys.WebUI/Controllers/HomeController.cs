@@ -1,6 +1,7 @@
 ﻿using KNDBsys.BLL.BaseInfo;
 using KNDBsys.Common.VerifyMoudle;
 using KNDBsys.Model.BaseInfo;
+using KNDBsys.ViewModel.MainView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,16 @@ namespace KNDBsys.WebUI.Controllers
 
         public ActionResult MainView()
         {
-            return View();
+            User_Ser userInfoSer = new User_Ser();
+
+            object id = Session["U@id"];
+            if (id == null)
+            {
+                //return View("Error");
+                id = "1";
+            }
+            Mainmenu mainmenu = userInfoSer.Mainmenu(id.ToString());
+            return View(mainmenu);
         }
 
         public string GetAuthoriy(int userid,string port)

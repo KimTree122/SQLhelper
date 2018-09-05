@@ -1,6 +1,7 @@
 ﻿using CS.BLL;
 using CS.BLL.BaseInfo;
 using KNDBsys.Model.BaseInfo;
+using KNDBsys.ViewModel.MainView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,13 @@ namespace KNDBsys.BLL.BaseInfo
         {
             UserInfo user = GetUserInfoByAccount(account, pwd);
             return user;
+        }
+
+        public Mainmenu Mainmenu(string userid)
+        {
+            UserInfo user = GetUserInfoByID(userid);
+            Mainmenu m = new Mainmenu { LoginUser = user };
+            return m;
         }
     }
 }

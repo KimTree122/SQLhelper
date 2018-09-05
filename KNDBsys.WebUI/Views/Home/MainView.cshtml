@@ -1,4 +1,5 @@
-﻿@{
+﻿@model KNDBsys.ViewModel.MainView.Mainmenu
+@{
     Layout = null;
 }
 
@@ -24,7 +25,8 @@
         });
 
         function LoadAuth() {
-            $.post("./GetAuthoriy", { userid: 1,port:"Web" }, function (result) {
+            var uid = @Model.LoginUser.id
+            $.post("./GetAuthoriy", { userid: uid, port: "Web" }, function (result) {
                 var str = JSON.parse(result);
                 $("#maintree").tree({
                     data: str
@@ -58,8 +60,8 @@
     <div data-options="region:'north',border:false,split:false" style="height: 60px;">
         <div class="define-head">
             <div class="define-logo">
-                <div id="LoginTopLine">Hello</div>
-                <div id="LoginBotoomLine"></div>
+                <div id="LoginTopLine">Hello @Model.LoginUser.Uname</div>
+                <div id="LoginBotoomLine"> @Model.LoginUser.UPost</div>
             </div>
             <div class="define-account">
 
