@@ -5,65 +5,164 @@
 }
 
 <style>
-
-    * {
-        margin: 0 0 0 0;
-    }
-
-    .panel-title {
-        text-align: center;
-        font-size: larger
-    }
-
-    .ColumnsIcon {
-        float: left;
-        margin-top: 3%;
-        margin-left: 4%;
-        width: 20%;
-        text-align: center;
-    }
-
-        .ColumnsIcon span {
-            font-size: medium;
-        }
-
-        .ColumnsIcon img {
-            width: 50px;
-            height: 50px;
-        }
 </style>
 
 <script type="text/javascript">
 
     $(document).ready(function () {
-        //TitleClick();
+        keyupanddown();
     });
 
-    function TitleClick() {
-        //$('.easyui-panel').panel('collapse', true);
-        var coe = $("#p").panel('options').collapsed;
+    function getMoreContents() {
+        var keyword = document.getElementById("tags").value;
+        if (keyword === "") {
+            clearContent();
+            return;
+        } else {
+            var ajax = new XMLHttpRequest();
+            var url = "SearchData?keyword=" + keyword;
+            ajax.open("GET", url, true);
+            ajax.send(null);
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState === 4) {
+                    if (ajax.status === 200) {
+                        var result = ajax.responseText;
+                        //insertContent(result);
+                        var json = JSON.parse(result);
 
-        alert(coe);
+                        $("#tags").autocomplete({
+                            source: json
+                        });
+
+
+                    }
+                }
+            };
+        }
     }
+
+    function keyupanddown() {
+
+        $("#keyword").keydown(function (event) {
+
+
+
+            //alert(event.keyCode);
+        });
+    }
+
+
+    function insertContent(content) {
+        clearContent();
+        setLocation();
+        var json = JSON.parse(content);
+        var len = json.length;
+        for (var i = 0; i < len; i++) {
+            var value = json[i];
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            td.setAttribute("bgcolor", "#FFFAFA");
+            td.setAttribute("border", "0");
+            td.onmouseover = function () {
+                this.className = 'mouseOver';
+            };
+            td.onmouseout = function () {
+                this.className = 'mouseOut';
+            };
+            td.onclick = function () {
+                // document.getElementById("keyword").value=this.;
+            };
+            var text = document.createTextNode(value);
+            td.appendChild(text);
+            tr.appendChild(td);
+            document.getElementById("content_table_body").appendChild(tr);
+        }
+
+    }
+
+    function clearContent() {
+        var popNode = document.getElementById("popDiv");
+        popNode.style.border = "none";
+        var contentNode = document.getElementById("content_table_body");
+        var len = contentNode.childNodes.length;
+        for (var i = len - 1; i >= 0; i--) {
+            contentNode.removeChild(contentNode.childNodes[i]);
+        }
+    }
+
+    function setLocation() {
+        var inputNode = document.getElementById("keyword");
+        var width = inputNode.offsetWidth;
+        var left = inputNode["offsetLeft"];
+        var top = inputNode.offsetHeight + inputNode["offsetTop"];
+        var popNode = document.getElementById("popDiv");
+        popNode.style.border = "gray 0.5px solid";
+        popNode.style.width = width + "px";
+        popNode.style.top = top + "px";
+        popNode.style.left = left + "px";
+        document.getElementById("content_table").style.width = width + "px";
+
+    }
+
+    //$(function () {
+    //    var availableTags = [
+    //        "ActionScript",
+    //        "AppleScript",
+    //        "Asp",
+    //        "BASIC",
+    //        "C",
+    //        "C++",
+    //        "Clojure",
+    //        "COBOL",
+    //        "ColdFusion",
+    //        "Erlang",
+    //        "Fortran",
+    //        "Groovy",
+    //        "Haskell",
+    //        "Java",
+    //        "JavaScript",
+    //        "Lisp",
+    //        "Perl",
+    //        "PHP",
+    //        "Python",
+    //        "Ruby",
+    //        "Scala",
+    //        "Scheme"
+    //    ];
+    //    $("#tags").autocomplete({
+    //        source: availableTags
+    //    });
+    //});
+
 
 </script>
 
-<div style="margin:20px 0 10px 0;">
-    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="TitleClick()">Test</a>
 
-</div>
+<div class="container">
 
-<div id="p" class="easyui-panel" title="移动业务" style="width:100%;"
-     data-options="collapsible:true ">
+    <div id="myDiv" class="row">
 
+            <input type="text" size="50" id="tags" onkeyup="getMoreContents()"
+                   onfocus="getMoreContents()" onblur="clearContent()" />
+            <input type="button" value="搜索一下" width="50px" />
+            <div id="popDiv">
+                <table id="content_table" bgcolor="#FFFAFA" border="0"
+                       30 cellspacing="0" cellpadding="0">
 
-    <div class="ColumnsIcon" id="AddressBook">
-        <a class="easyui-linkbutton"><img src="~/Content/Images/sale.png" /></a><br /> <span>通讯</span>
-    </div>
+                    <tbody id="content_table_body">
+                        <!-- 动态数据在这里显示 -->
+                    </tbody>
 
-    <div class="ColumnsIcon" id="Announcement">
-        <a class="easyui-linkbutton"><img src="~/Content/Images/sale.png" /><span class="m-badge">*</span> </a><br /> <span>公告</span>
-    </div>
+                </table>
+
+            </div>
+
+     </div>
+
+ 
+        @*<label for="tags">Tags: </label>
+        <input id="tags">*@
+ 
 
 </div>
 
