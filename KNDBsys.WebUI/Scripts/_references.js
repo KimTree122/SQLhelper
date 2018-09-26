@@ -6,3 +6,6 @@
 /// <reference path="bootstrap.js" />
 /// <reference path="respond.js" />
 /// <reference path="jquery.easyui.min.js" />
+/// <reference path="angular.js" />
+/// <reference path="chart.js/Chart.bundle.js" />
+/// <reference path="chart.js/Chart.js" />

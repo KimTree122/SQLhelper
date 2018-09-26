@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CS.BLL.BaseInfo;
+using KNDBsys.Model.BaseInfo;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,9 @@ namespace KNDBsys.WebUI.Areas.PorjectTest.Controllers
     public class ViewLayoutController : Controller
     {
         // GET: PorjectTest/ViewLayout
+
+        private AuthorityService authority = new AuthorityService();
+
         public ActionResult Index()
         {
             return View();
@@ -17,25 +22,33 @@ namespace KNDBsys.WebUI.Areas.PorjectTest.Controllers
 
         public string SearchData(string keyword)
         {
-            List<string> strls = new List<string>();
-            strls.Add("AABB");
-            strls.Add("BBCC");
-            strls.Add("CCDD");
-            strls.Add("DDAA");
-            strls.Add("GGEE");
+            List<string> strls = new List<string>
+            {
+                "AABB",
+                "BBCC",
+                "CCDD",
+                "DDAA",
+                "GGEE"
+            };
+
+            List<Authority> authorities = authority.GetAuthorities(1);
+
 
             List<string> ls = new List<string>();
-            foreach (var str in strls)
+
+            foreach (var au in authorities)
             {
-                if (str.ToLower().Contains(keyword.ToLower()))
-                {
-                    ls.Add(str);
-                }
+                ls.Add(au.TreeName+","+au.id);
             }
 
             string strreturn = JsonConvert.SerializeObject(ls);
 
             return strreturn;
+        }
+
+        public ActionResult ChartTest()
+        {
+            return View();
         }
 
     }

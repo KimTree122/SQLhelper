@@ -14,16 +14,20 @@ namespace KNDBsys.WebUI
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            //easyuijs
+            //easyui_js
             bundles.Add(new ScriptBundle("~/bundles/easyuijs").Include(
                         "~/Scripts/jquery.easyui.min.js", "~/Scripts/jquery.easyui.mobile.js"));
-            //easyuicss
+            //easyui_css
             bundles.Add(new StyleBundle("~/Content/easyuicss").Include(
                       "~/Content/themes/default/easyui.css",
                       "~/Content/themes/icon.css", "~/Content/themes/mobile.css"));
-            //jqueryui
+            //jqueryui_js
             bundles.Add(new ScriptBundle("~/bundles/jqueryuijs").Include("~/Scripts/jquery-ui.js"));
+            //jqueryui_css
             bundles.Add(new StyleBundle("~/Content/jqueryuicss").Include("~/Content/jquery-ui.css"));
+
+            //chart.js
+            bundles.Add(new ScriptBundle("~/bundles/chartjs").Include("~/Scripts/chart.js/Chart.bundle.js", "~/Scripts/chart.js/Chart.js", "~/Scripts/chart.js/utils.js"));
 
 
             // 使用要用于开发和学习的 Modernizr 的开发版本。然后，当你做好
@@ -37,6 +41,10 @@ namespace KNDBsys.WebUI
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/AngularJS").Include(
+                      "~/Scripts/angular.min.js"));
+
         }
     }
 }
