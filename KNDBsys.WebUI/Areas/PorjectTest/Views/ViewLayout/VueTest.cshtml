@@ -1,0 +1,292 @@
+﻿
+@{
+    ViewBag.Title = "VueTest";
+    Layout = "~/Views/Shared/_LayoutEasyUI.cshtml";
+}
+
+<div>
+    @*<div id="app">
+            <p>{{message}}</p>
+        </div>*@
+
+
+    @*<div id="vue_det">
+            <h1> site:{{site}}</h1>
+            <h2>url:{{url}}</h2>
+            <h3>{{details()}}</h3>
+        </div>*@
+
+    @*<div id="app">
+            <label for="r1">修改颜色</label><input type="checkbox" v-model="class1" id="r1" />
+            <br /><br />
+            <div v-bind:class="{'class1':class1}">
+                v-bind:class 指令
+            </div>
+
+        </div>*@
+
+    @*<div id="app">
+            {{5+5}}<br />
+            {{ok?'yes':'no'}}<br />
+            {{message.split('').reverse().join('')}}
+            <div v-bind:id="'list-'+id">KIM</div>
+
+        </div>*@
+
+    @*双向绑定
+        <div id="app">
+            <input v-model="message">
+            <input v-model="message">
+        </div>*@
+
+    @*<div id="app">
+            <p>{{message}}</p>
+            <button v-on:click="reverseMessage">反转字符</button>
+        </div>*@
+
+    @*<div id="app">
+            {{message | capitalize}}
+        </div>*@
+
+
+    @*<div id="app">
+            <div v-if="type === 'A'">
+                A
+            </div>
+            <div v-else-if="type === 'B'">
+                B
+            </div>
+            <div v-else-if="type === 'C'">
+                C
+            </div>
+            <div v-else>
+                Not A/B/C
+            </div>
+        </div>*@
+
+
+    @*<div id="app">
+                <ol>
+                    <li v-for="site in sites">
+                        {{site.name}}
+                    </li>
+                </ol>
+
+                <ul>
+                    <template v-for="site in sites">
+                        <li>{{ site.name }}</li>
+                        <li>--------------</li>
+                    </template>
+                </ul>
+
+                <ul>
+                    <li v-for="value in object">
+                        {{ value }}
+                    </li>
+                </ul>
+
+                <ul>
+                    <li v-for="(value, key) in object">
+                        {{ key }} : {{ value }}
+                    </li>
+                </ul>
+
+                <ul>
+                    <li v-for="(value, key, index) in object">
+                        {{ index }}. {{ key }} : {{ value }}<ul>
+            <li v-for="(value, key, index) in object">
+                {{ index }}. {{ key }} : {{ value }}
+            </li>
+        </ul>
+                    </li>
+                </ul>
+
+            </div>*@
+
+    @*<div id="computed_props">
+            千米 : <input type="text" v-model="kilometers">
+            米 : <input type="text" v-model="meters">
+        </div>
+        <p id="info"></p>*@
+
+    @*<div id="app">
+        <div class="static"
+             v-bind:class="{ active: isActive, 'text-danger': hasError }">
+        </div>
+    </div>*@
+
+    <div id="app">
+        <div v-bind:style="{color:activeColor,fontSize:fontSize+'px'}">KIM</div>
+    </div>
+
+
+
+</div>
+
+<style>
+    /*.active {
+        width: 100px;
+        height: 100px;
+        background: green;
+    }*/
+
+    .text-danger {
+        width:50px;
+        height:50px;
+        background: red;
+    }
+</style>
+
+<script type="text/javascript">
+
+    new Vue({
+        el: '#app',
+        data: {
+            activeColor: 'green',
+            fontSize: 30
+        }
+    })
+
+
+    //$(document).ready(function () {
+    //    vuejs();
+    //});
+
+    //function vuejs() {
+    //    var vm = new Vue({
+    //        el: '#computed_props',
+    //        data: {
+    //            kilometers: 0,
+    //            meters: 0
+    //        },
+    //        methods: {
+    //        },
+    //        computed: {
+    //        },
+    //        watch: {
+    //            kilometers: function (val) {
+    //                this.kilometers = val;
+    //                this.meters = val * 1000;
+    //            },
+    //            meters: function (val) {
+    //                this.kilometers = val / 1000;
+    //                this.meters = val;
+    //            }
+    //        }
+    //    });
+    //    // $watch 是一个实例方法
+    //    vm.$watch('kilometers', function (newValue, oldValue) {
+    //        // 这个回调将在 vm.kilometers 改变后调用
+    //        document.getElementById("info").innerHTML = "修改前值为: " + oldValue + "，修改后值为: " + newValue;
+    //    })
+    //}
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        sites: [
+    //            { name: 'KIM' }, { name: 'TREE' }, { name: 'Project' }
+    //        ],
+    //        object: {
+    //            name: '菜鸟教程',
+    //            url: 'http://www.runoob.com',
+    //            slogan: '学的不仅是技术，更是梦想！'
+    //        }
+    //    }
+    //});
+
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        type: 'C'
+    //    }
+    //})
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        message:'kim Project'
+    //    },
+    //    filters: {
+    //        capitalize: function (value) {
+    //            if (!value) return ''
+    //            value = value.toString()
+    //            return value.charAt(0).toUpperCase() + value.slice(1)
+    //        }
+    //    }
+    //});
+
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        message:'KIM project'
+    //    },
+    //    methods: {
+    //        reverseMessage: function () {
+    //            this.message = this.message.split('').reverse().join('')
+    //        }
+    //    }
+    //});
+
+
+
+    ////双向绑定
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        message: 'Runoob!'
+    //    }
+    //})
+
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        ok: false,
+    //        message: 'Tree',
+    //        id:1
+    //    }
+    //});
+
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        class1: true
+    //    }
+    //})
+
+    //var vm = new Vue({
+    //    el: '#vue_det',
+    //    data: {
+    //        site: "kim",
+    //        url: "www.baidu.com",
+    //        alexa:"10000"
+    //    },
+    //    methods:{
+    //        details: function () {
+    //            return this.site + "--shijienameda,\r\n qianbaonamekong";
+    //        }
+    //    }
+    //});
+
+    //document.write(vm.data == true);
+    //document.write("<br/>");
+    //document.write(vm.$el === document.getElementById('vue_det'));
+
+
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        message:'Hello Vue.js!'
+    //    }
+    //});
+
+</script>
+
+
+
+

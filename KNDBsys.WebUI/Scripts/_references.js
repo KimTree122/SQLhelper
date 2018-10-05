@@ -9,3 +9,4 @@
 /// <reference path="angular.js" />
 /// <reference path="chart.js/Chart.bundle.js" />
 /// <reference path="chart.js/Chart.js" />
+/// <reference path="vue.js" />

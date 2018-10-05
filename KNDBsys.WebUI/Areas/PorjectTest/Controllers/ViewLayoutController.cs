@@ -51,5 +51,21 @@ namespace KNDBsys.WebUI.Areas.PorjectTest.Controllers
             return View();
         }
 
+        public ActionResult AngularView()
+        {
+            return View();
+        }
+
+        public string AngularHttp()
+        {
+            string str = "CN,EN,JP";
+            return str;
+        }
+
+        public ActionResult VueTest()
+        {
+            return View();
+        }
+
     }
 }

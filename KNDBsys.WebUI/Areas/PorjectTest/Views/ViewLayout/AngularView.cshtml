@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "AngularView";
+    Layout = "~/Views/Shared/_LayoutEasyUI.cshtml";
+}
+
+<script type="text/javascript">
+
+    var app = angular.module('myApp', []);
+    //---
+    //app.controller('myCtrl', function ($scope, $timeout) {
+    //    $scope.myWelcome = "Hello,Angular!";
+    //    $timeout(function () {
+    //        $scope.myWelcome = "Hello,Jquery";
+    //    },2000);
+    //});
+
+    //---
+    //app.controller('myCtrl', function ($scope, $interval) {
+    //    $scope.myWelcome = new Date().toLocaleTimeString();
+    //    $interval(function () {
+    //        $scope.myWelcome = new Date().toLocaleTimeString()
+    //    }, 1000);
+
+    //});
+
+    //----
+    //app.service('hexafy', function () {
+    //    this.myfunc = function (x) {
+    //        return x.toString(16);
+    //    }
+    //});
+
+    //app.controller('myCtrl', function ($scope, hexafy) {
+    //    $scope.myWelcome = hexafy.myfunc(17);
+    //});
+
+    //app.filter('myFormat', ['hexafy', function (hexafy) {
+    //    return function (x) {
+    //        return hexafy.myfunc(x);
+    //    }
+    //}]);
+
+    //app.controller('myCtrl', function ($scope) {
+    //    $scope.mylist = [255, 254, 253, 252, 251];
+    //});
+
+    //---
+    //app.controller('myCtrl', function ($scope, $http) {
+    //    $http({
+    //        method: 'GET',
+    //        url: './AngularHttp'
+    //    }).then(function successCallback(response) {
+    //        $scope.myWelcome = response.data;
+    //        }, function errorCallback(response) {
+    //            alert(response);
+    //        });
+    //});
+
+    //http
+    //app.controller('myCtrl', function ($scope, $http) {
+    //    $http.get("./AngularHttp")
+    //        .then(function (response) { $scope.myWelcome = response.data; });
+    //});
+
+    //select option
+    //app.controller('myCtrl', function ($scope) {
+    //    $scope.cars = {
+    //        car01: { brand: "Ford", model: "Mustang", color: "red" },
+    //        car02: { brand: "Fiat", model: "500", color: "white" },
+    //        car03: { brand: "Volvo", model: "XC90", color: "black" }
+    //    }
+    //    //设置初始值
+    //    $scope.selectedCar = $scope.cars.car01;
+    //});
+
+    ////事件
+    //app.controller('myCtrl', function ($scope) {
+    //    $scope.count = 0;
+    //});
+
+    //事件2
+    //app.controller('personCtrl', function ($scope) {
+    //    $scope.firstName = "kim";
+    //    $scope.lastName = "tree";
+    //    $scope.myVar = false;
+    //    $scope.toggle = function () {
+    //        $scope.myVar = !$scope.myVar;
+    //    };
+    //});
+
+    // 定义一个模块
+
+    var mainApp = angular.module("mainApp", []);
+    mainApp.value("defaultInput", 5);
+
+    mainApp.factory('MathService', function () {
+        var factory = {};
+
+        factory.multiply = function (a, b) {
+            return a * b;
+        }
+        return factory;
+    });
+
+    mainApp.service('CalcService', function (MathService) {
+        this.square = function (a) {
+            return MathService.multiply(a, a);
+        }
+    });
+
+    mainApp.controller('CalcController', function ($scope, CalcService, defaultInput) {
+        $scope.number = defaultInput;
+        $scope.result = CalcService.square($scope.number);
+
+        $scope.square = function () {
+            $scope.result = CalcService.square($scope.number);
+        }
+    });
+
+
+
+</script>
+
+<div>
+
+    <h2>AngularJS 简单应用</h2>
+    
+    <div ng-app="mainApp" ng-controller="CalcController">
+        <p>输入一个数字: <input type="number" ng-model="number" /></p>
+        <button ng-click="square()">X<sup>2</sup></button>
+        <p>结果: {{result}}</p>
+    </div>
+
+    @*<div ng-app="myApp" ng-controller="personCtrl">
+            <button ng-click="toggle()">隐藏/显示</button>
+            <p ng-hide="myVar">
+                名:<input type="text" ng-model="firstName" />
+                姓:<input type="text" ng-model="lastName" />
+                <br />
+                全名:{{firstName+"-"+lastName}}
+            </p>
+        </div>*@
+
+    @*<div ng-app="myApp" ng-controller="myCtrl">
+            <button ng-click="count = count+1">add</button>
+            <p>{{count}}</p>
+        </div>*@
+
+    @*<div ng-app="" ng-init="mySwitch=false;hour=13">
+            <p>
+                <button ng-disabled="mySwitch">确定</button>
+            </p>
+            <p>
+                <input type="checkbox" ng-model="mySwitch" />按钮
+            </p>
+            <p>
+                {{mySwitch}}
+            </p>
+            <p ng-show="hour<12">可见</p>
+
+        </div>*@
+
+
+    @*<div ng-app="myApp" ng-controller="myCtrl">
+
+            <p>选择一辆车:</p>
+
+            <select ng-model="selectedCar" ng-options="y.brand for (x, y) in cars"></select>
+            <p>你选择的是: {{selectedCar.brand}}</p>
+            <p>型号为: {{selectedCar.model}}</p>
+            <p>颜色为: {{selectedCar.color}}</p>
+
+            <p>下拉列表中的选项也可以是对象的属性。</p>
+
+        </div>*@
+
+
+</div>
