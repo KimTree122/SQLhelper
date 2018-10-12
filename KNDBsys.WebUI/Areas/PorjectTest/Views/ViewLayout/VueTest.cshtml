@@ -218,16 +218,61 @@
         <child message="Hello!KIM"></child>
     </div>*@
 
-    <div id="app">
-
+    @*<div id="app">
         <div>
             <input v-model="parentMsg" />
             <br />
             <child v-bind:message="parentMsg"></child>
 
         </div>
+    </div>*@
 
-    </div>
+    @*<div id="app">
+        <ol>
+            <todo-item v-for="item in sites" v-bind:todo="item"></todo-item>
+        </ol>
+
+    </div>*@
+
+    @*<div id="app">
+        <div id="counter-event-example">
+            <p>{{total}}</p>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+        </div>
+    </div>*@
+
+
+    @*<div id="app">
+        <p>input自动获取焦点</p>
+        <input v-focuse />
+    </div>*@
+
+    @*<div id="app" v-kim:hello.a.b="message"></div>*@
+
+    @*<div id="app">
+        <button v-on:click="show =! show">点我</button>
+
+        <transition name="fade">
+            <p v-show="show" v-bind:style = "styleobj">动画示例</p>
+        </transition>
+
+    </div>*@
+
+    @*<div id="app">
+        <button v-on:click="show =!show">启动</button>
+        <transition name="slide-fade">
+            <p v-if="show">KIMTREE</p>
+        </transition>
+    </div>*@
+
+    @*<div id="app">
+        <p style="font-size:25px;">计数器：{{counter}}</p>
+        <button v-on:click="counter++" style="font-size:25px;">点我</button>
+    </div>*@
+
+    
+    
 
 </div>
 
@@ -238,26 +283,158 @@
         background: green;
     }*/
 
-    .text-danger {
+    /*.text-danger {
         width:50px;
         height:50px;
         background: red;
-    }
+    }*/
+
+    /*.slide-fade-enter-active {
+        transition: all .3s ease;
+    }*/
+
+    /*.slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }*/
+
+    /* .slide-fade-leave-active 用于 2.1.8 以下版本 */
+    /*.slide-fade-enter, .slide-fade-leave-to {
+        transform: translateX(10px);
+        opacity: 0;
+    }*/
+
 </style>
 
 <script type="text/javascript">
 
-    Vue.component('child', {
-        props: ['message'],
-        template:'<h1>{{message}}</h1>'
-    });
 
-    new Vue({
-        el: '#app',
-        data: {
-            parentMsg:'父组件内容'
-        }
-    });
+
+
+    //var vm = new Vue({
+    //    el: '#app',
+    //    data: {
+    //        counter: 1
+    //    }
+    //});
+
+    //vm.$watch('counter', function (nval, oval) {
+    //    alert("原始:" + oval + "新值：" + nval);
+
+    //    setTimeout(function () {
+    //        vm.counter = 20;
+    //    }, 2000);
+    //});
+
+   
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        show: true
+    //    }
+    //})
+
+
+    //var vm = new Vue({
+    //    el: '#app',
+    //    data: {
+    //        show: true,
+    //        styleobj: {
+    //            fontSize: '30px',
+    //            color: '#abcabc'
+    //        }
+    //    },
+    //    methods: {
+    //    }
+    //});
+
+
+    //Vue.directive('kim', {
+    //    bind: function (el,binding,vnode) {
+    //        var s = JSON.stringify
+    //        el.innerHTML = 
+    //            'name:' + s(binding.name) + '<br/>' +
+    //            'value:' + s(binding.value) + '<br/>' +
+    //            'expression:' + s(binding.expression) + '<br/>' +
+    //            'argument:' + s(binding.arg) + '<br/>' +
+    //        'modifiers:' + s(binding.modifiers) + '<br/>' +
+    //        'vnode keys:' + Object.keys(vnode).join(',')
+
+    //    }
+    //})
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        message:'bird want to fly'
+    //    }
+    //})
+
+    //Vue.directive('focuse', {
+    //    inserted: function (el) {
+    //        el.focus()
+    //    }
+    //})
+
+    //new Vue({
+    //    el:'#app'
+    //})
+
+    //Vue.component('button-counter', {
+    //    template: ' <button v-on:click="incrementHandler">{{counter}}</button>',
+    //    data: function () {
+    //        return {
+    //            counter:0
+    //        }
+    //    },
+    //    methods: {
+    //        incrementHandler: function () {
+    //            this.counter += 1
+    //            this.$emit('increment')
+    //        }
+    //    },
+    //})
+
+    //new Vue({
+    //    el: '#counter-event-example',
+    //    data: {
+    //        total:0
+    //    },
+    //    methods: {
+    //        incrementTotal: function () {
+    //            this.total += 1
+    //        }
+    //    }
+    //})
+
+
+    //Vue.component('todo-item', {
+    //    props: ['todo'],
+    //    template: '<li>{{todo.text}}</li>'
+    //});
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        sites: [
+    //            { text: 'Apple' },
+    //            { text: 'Google' },
+    //            { text: 'Facebook' }
+    //        ]
+    //    }
+    //})
+
+
+    //Vue.component('child', {
+    //    props: ['message'],
+    //    template:'<h1>{{message}}</h1>'
+    //});
+
+    //new Vue({
+    //    el: '#app',
+    //    data: {
+    //        parentMsg:'父组件内容'
+    //    }
+    //});
 
     //Vue.component('child', {
     //    props: ['message'],

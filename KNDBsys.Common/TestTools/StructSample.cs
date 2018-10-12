@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace KNDBsys.Common.TestTools
 {
@@ -42,9 +43,11 @@ namespace KNDBsys.Common.TestTools
             StructSample ss1 = new StructSample(1, 2);
             StructSample ss2 = new StructSample(2, 3);
 
+
             int count = ss1 + ss2;
         }
 
+        
 
     }
 
