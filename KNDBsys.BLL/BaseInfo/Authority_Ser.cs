@@ -18,5 +18,14 @@ namespace KNDBsys.BLL.BaseInfo
             string str = tNH.InitTreeNode_json(auth, 0, false);
             return str;
         }
+
+        public string GetAllAuth()
+        {
+            
+
+
+            return "";
+        }
+
     }
 }

@@ -16,6 +16,7 @@ namespace KNDBsys.WebUI.Areas.BaseInfo.Controllers
 
         public ActionResult AuthManage()
         {
+
             return View();
         }
     }
