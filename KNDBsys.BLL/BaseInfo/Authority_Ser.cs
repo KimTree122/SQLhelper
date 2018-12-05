@@ -19,9 +19,10 @@ namespace KNDBsys.BLL.BaseInfo
             return str;
         }
 
-        public string GetAllAuth()
+        public string GetAllAuth(int userid)
         {
-            
+            AuthorityService service = new AuthorityService();
+            service.GetAuthorities(userid);
 
 
             return "";

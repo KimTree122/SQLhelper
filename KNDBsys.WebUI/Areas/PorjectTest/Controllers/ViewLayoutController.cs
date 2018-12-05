@@ -67,5 +67,20 @@ namespace KNDBsys.WebUI.Areas.PorjectTest.Controllers
             return View();
         }
 
+        public ActionResult FatherView()
+        {
+            return View();
+        }
+
+        public ActionResult SonView()
+        {
+            return View();
+        }
+
+        public ActionResult SearchView()
+        {
+            return View();
+        }
+
     }
 }

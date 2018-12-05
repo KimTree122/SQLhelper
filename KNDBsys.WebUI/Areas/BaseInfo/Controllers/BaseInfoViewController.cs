@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CS.BLL.BaseInfo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,8 +17,15 @@ namespace KNDBsys.WebUI.Areas.BaseInfo.Controllers
 
         public ActionResult AuthManage()
         {
-
             return View();
+        }
+
+        public string GetAllAuth(int userid)
+        {
+            AuthorityService auser = new AuthorityService();
+            var authorities = auser.GetAuthorities(userid);
+
+            return "";
         }
     }
 }

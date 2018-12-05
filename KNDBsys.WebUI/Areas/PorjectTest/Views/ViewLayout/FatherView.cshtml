@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "FatherView";
+    Layout = "~/Views/Shared/_LayoutEasyUI.cshtml";
+}
+
+<h2>FatherView</h2>
+
+<style>
+
+
+</style>
+
+<div>
+
+    <div class="ltd">
+        <input type="text" value="123" />
+    </div>
+
+    <button id="father-btn" type="button" class="btn btn-primary btn-lg">弹窗</button>
+
+    <input id="father-text" class="form-control input-sm" type="text" />
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#father-btn').click(function () {
+            //OpenDialog();
+            TypeTest();
+        });
+
+        HostID();
+    });
+
+    function TypeTest() {
+        var test = "undefined";
+        if (test) {
+            alert("true");
+        } else {
+            alert("false");
+        }
+    }
+
+    function OpenDialog() {
+        layer.open({
+            type: 2,
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: './SonView'
+        });
+    }
+
+    function FatherData() {
+        return "fathertest";
+    }
+
+    function HostID() {
+
+        //var locat = window.location.hostname;
+
+        var HostPCName = Dns.GetHostName();
+        alert(HostPCName);
+    }
+   
+
+</script>
+
+

@@ -32,6 +32,12 @@ namespace KNDBsys.WebUI
             //vue.js
             bundles.Add(new ScriptBundle("~/bundles/vue.js").Include("~/Scripts/vue.js"));
 
+            //layui弹窗
+            bundles.Add(new ScriptBundle("~/bundles/layui.js").Include("~/Scripts/layer/layer.js"));
+
+            //个人通用
+            bundles.Add(new ScriptBundle("~/bundles/Custom.js").Include("~/Scripts/CustomJS/KIMComm.js"));
+
 
             // 使用要用于开发和学习的 Modernizr 的开发版本。然后，当你做好
             // 生产准备时，请使用 http://modernizr.com 上的生成工具来仅选择所需的测试。

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "SonView";
+    Layout = "~/Views/Shared/_LayoutEasyUI.cshtml";
+}
+
+<h2>SonView</h2>
+
+<div>
+
+    <button id="son-btn" type="button" class="btn btn-primary btn-lg">回调</button>
+
+    <input id="son-text" class="form-control input-sm" type="text" />
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+
+        var f = parent.FatherData();
+
+        alert(f);
+
+        $('#son-btn').click(function () {
+            var sontext = $('#son-text').val();
+            CallBackFather(sontext, index);
+        });
+    });
+
+    function CallBackFather(sontext,findex) {
+
+        parent.$('#father-text').val(sontext);
+
+        parent.layer.close(findex);
+    }
+
+
+
+
+</script>
