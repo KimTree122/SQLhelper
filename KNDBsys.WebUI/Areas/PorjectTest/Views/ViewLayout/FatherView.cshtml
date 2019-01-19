@@ -21,6 +21,34 @@
 
     <input id="father-text" class="form-control input-sm" type="text" />
 
+    
+    <div id="result"></div>
+
+    <div>
+        @{
+            //只能同区域下
+            Html.RenderPartial("SonView");
+        }
+    </div>
+
+    <div>
+        
+        @*@RenderPage("SonView.cshtml");*@
+        @*@RenderPage("BaseInfo/BaseInfoView/AuthManage.cshtml");*@
+        
+    </div>
+
+    <div>
+
+        @*@Html.Action("Login", "Home");*@
+
+    </div>
+    <div>
+        @{ 
+            Html.RenderAction("AuthManage", "BaseInfoView", new { area = "BaseInfo" });
+        }
+    </div>
+
 </div>
 
 <script type="text/javascript">
@@ -28,11 +56,15 @@
     $(document).ready(function () {
 
         $('#father-btn').click(function () {
-            //OpenDialog();
-            TypeTest();
+            OpenDialog();
+            //TypeTest();
         });
+        //获取部分视图
+        //$('#result').load('/Home/Login');
 
-        HostID();
+
+
+        //HostID();
     });
 
     function TypeTest() {
