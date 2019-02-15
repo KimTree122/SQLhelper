@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -82,5 +83,23 @@ namespace KNDBsys.WebUI.Areas.PorjectTest.Controllers
             return View();
         }
 
+        //async task test
+        public  async Task<string> GetTaskAsync()
+        {
+            string  x = await taskgetdata();
+            return  x;
+        }
+
+        private  Task<string> taskgetdata()
+        {
+            return Task<string>.Run(()=> {
+                return getdata();
+            });
+        }
+
+        public string getdata()
+        {
+            return "test";
+        }
     }
 }
