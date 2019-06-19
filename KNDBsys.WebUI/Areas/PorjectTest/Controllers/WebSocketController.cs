@@ -9,15 +9,9 @@ namespace KNDBsys.WebUI.Areas.PorjectTest.Controllers
     public class WebSocketController : Controller
     {
         // GET: PorjectTest/WebSocket
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
 
-        public ActionResult WebSocketTest()
-        {
-            return View();
-        }
+        public ActionResult WebSocketTest() => View();
 
     }
 }
